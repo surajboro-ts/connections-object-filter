@@ -1,0 +1,15 @@
+/** Radiant — Icon. Renders a Radiant SVG glyph; inherits its context's colour
+    (so a CTA's icon matches the CTA text), scales to `size`. */
+.rad-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  line-height: 0;
+  color: inherit;
+}
+.rad-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

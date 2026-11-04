@@ -1,0 +1,13 @@
+/**
+ * Radiant — Radius
+ * Five corner values. Radius rises with the size of the surface — the smaller
+ * the element, the tighter the corner. Figma names: Radius/4 … Radius/16.
+ */
+
+:root {
+  --rd-sys-radius-4: 4px;   /* Chips, checkboxes, tags & other small controls under 24px tall */
+  --rd-sys-radius-6: 6px;   /* Default — buttons, inputs, search bars, menu items, segmented controls */
+  --rd-sys-radius-8: 8px;   /* Modals, popovers, toasts & menu containers */
+  --rd-sys-radius-12: 12px; /* Cards, tiles & panels inside a page */
+  --rd-sys-radius-16: 16px; /* Page-level containers, sheets & full-width surfaces */
+}

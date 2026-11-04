@@ -1,0 +1,48 @@
+/**
+ * Radiant — Link styles. From Figma "Link" set: Weight (Light/Medium) ×
+ * Type/tone (Blue/White/Black/Gray) × State (Default / Hover=underline).
+ */
+
+.rad-link {
+  font-family: var(--rd-sys-font-family);
+  font-size: var(--rd-sys-type-body-size); /* 14px */
+  line-height: var(--rd-sys-type-body-line); /* 20px */
+  cursor: pointer;
+  text-decoration: none;
+  transition: text-decoration-color 100ms ease;
+}
+
+/* Size */
+.rad-link--small {
+  font-size: var(--rd-sys-type-caption-size); /* 12px */
+  line-height: var(--rd-sys-type-caption-line);
+}
+
+/* Weight */
+.rad-link--light { font-weight: var(--rd-sys-font-weight-regular); }
+.rad-link--medium { font-weight: var(--rd-sys-font-weight-medium); letter-spacing: var(--rd-sys-type-subhead-tracking); }
+
+/* Tone */
+.rad-link--blue { color: var(--rd-sys-color-content-brand); }
+.rad-link--white { color: var(--rd-sys-color-content-inverse); }
+.rad-link--black { color: var(--rd-sys-color-content-primary); }
+.rad-link--gray { color: var(--rd-sys-color-content-secondary); }
+
+/* Always-underlined variant */
+.rad-link--underline {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Hover — underline */
+.rad-link:hover,
+.rad-link--force-hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rad-link:focus-visible {
+  outline: 2px solid var(--rd-sys-color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--rd-sys-radius-4);
+}

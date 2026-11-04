@@ -1,0 +1,84 @@
+/** Radiant — Checkbox (Figma "Checkbox" 378:17205), verified 1:1 by sampling the
+    render: OUTLINED in every state — white fill, no filled square.
+      • Unselected: gray border, no mark.
+      • Selected / Intermediate: brand-blue border + brand-blue check / minus.
+      • Error: red border + red mark.
+      • Disabled: whole control at 40% opacity.
+    16px box, radius 4. */
+.rad-check {
+  position: relative;
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.rad-check__input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.rad-check__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  /* Decorative only — let clicks fall through to the input beneath (which is
+     opacity:0 and painted below this box), so a bare checkbox toggles on click. */
+  pointer-events: none;
+  border: 1px solid var(--rd-sys-color-border-bold); /* unselected: gray outline */
+  border-radius: 1.5px; /* Figma: rx 1.5 — measured from render (a subtle round, not 4px) */
+  background: var(--rd-sys-color-bg-base); /* white fill — never a filled square */
+  color: var(--rd-sys-color-content-brand); /* the check / minus colour */
+  transition: border-color 100ms ease, color 100ms ease;
+}
+.rad-check__mark {
+  width: 14px; /* 14×14 glyph centred in the 16px box (1px inset each side) */
+  height: 14px;
+  opacity: 0;
+}
+/* hover only affects the unselected box */
+.rad-check__input:hover:not(:checked):not(:indeterminate) + .rad-check__box {
+  border-color: var(--rd-sys-color-border-bold-hover);
+}
+/* Selected / Intermediate = brand border + brand mark (fill stays white) */
+.rad-check__input:checked + .rad-check__box,
+.rad-check__input:indeterminate + .rad-check__box {
+  border-color: var(--rd-sys-color-border-brand);
+}
+.rad-check__input:checked + .rad-check__box .rad-check__mark,
+.rad-check__input:indeterminate + .rad-check__box .rad-check__mark {
+  opacity: 1;
+}
+.rad-check__input:focus-visible + .rad-check__box {
+  outline: 2px solid var(--rd-sys-color-border-focus);
+  outline-offset: 1px;
+}
+.rad-check__input:disabled + .rad-check__box { cursor: not-allowed; }
+
+/* Error = red border + red mark in every state. The extra `.rad-check--error`
+   class out-specifies the checked / indeterminate / hover rules above. */
+.rad-check--error .rad-check__box,
+.rad-check--error .rad-check__input:hover + .rad-check__box,
+.rad-check--error .rad-check__input:checked + .rad-check__box,
+.rad-check--error .rad-check__input:indeterminate + .rad-check__box {
+  border-color: var(--rd-sys-color-border-failure);
+  color: var(--rd-sys-color-content-failure);
+}
+
+/* Disabled fades the whole control (box + label) to 40%. */
+.rad-check:has(.rad-check__input:disabled),
+.rad-check-field:has(.rad-check__input:disabled) { opacity: 0.4; }
+
+.rad-check-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c); /* 12px (Figma) */
+  cursor: pointer;
+}
+.rad-check-field__label {
+  color: var(--rd-sys-color-content-primary);
+}

@@ -1,0 +1,32 @@
+/** Radiant — Banner. Padding 14px 16px, radius 6, gap 12; dark filled status glyph. */
+.rad-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c); /* 12px */
+  box-sizing: border-box;
+  padding: 14px var(--rd-sys-spacing-d);
+  border-radius: var(--rd-sys-radius-6);
+}
+.rad-banner--warning { background: var(--rd-sys-color-bg-warning); }
+.rad-banner--info { background: var(--rd-sys-color-bg-brand-subtle, var(--rd-sys-color-bg-ghost-highlight)); }
+.rad-banner--success { background: var(--rd-sys-color-bg-success-subtle, var(--rd-sys-color-chip-measure-default)); }
+.rad-banner--failure { background: var(--rd-sys-color-bg-failure-subtle, var(--rd-sys-color-chip-error-default)); }
+.rad-banner--muted { background: var(--rd-sys-color-bg-secondary-action); }
+
+.rad-banner__icon {
+  display: inline-flex;
+  flex: none;
+  align-self: center; /* centred with the text */
+}
+/* Status glyph is tinted by status (white mark inside). */
+.rad-banner--warning .rad-banner__icon { color: var(--rd-sys-color-content-warning); }
+.rad-banner--failure .rad-banner__icon { color: var(--rd-sys-color-content-failure); }
+.rad-banner--success .rad-banner__icon { color: var(--rd-sys-color-content-success); }
+.rad-banner--info .rad-banner__icon { color: var(--rd-sys-color-content-brand); }
+.rad-banner__body { flex: 1 1 auto; color: var(--rd-sys-color-content-primary); }
+.rad-banner .rad-iconbtn { flex: none; align-self: center; }
+/* The dismiss is drawn in Content/Primary, not the ghost button's muted
+   secondary -- it reads at the weight of the message it closes. */
+.rad-banner .rad-iconbtn--ghost { color: var(--rd-sys-color-content-primary); }
+.rad-banner .rad-iconbtn--ghost:active,
+.rad-banner .rad-iconbtn--ghost[data-force-state='activated'] { color: var(--rd-sys-color-content-brand); }

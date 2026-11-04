@@ -1,0 +1,131 @@
+/**
+ * Radiant — Split button. From Figma "Split button" set.
+ *   Left half  — radius 16px 1px 1px 16px, padding 6px 8px 6px 16px
+ *   Right half — radius 1px 16px 16px 1px, 36×32, padding 8px
+ *   Gap between halves = 2px
+ *   Primary  — blue60 halves, white label; left/right hover → blue70; right activated → blue80
+ *   Secondary— gray20 halves, dark label; hovers → gray30; activated → gray40
+ *   Right activated opens a menu (Elevation/Menu, radius 6px).
+ */
+
+.rad-split {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 2px;
+  font-family: var(--rd-sys-font-family);
+}
+
+.rad-split__left,
+.rad-split__right {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 32px;
+  transition: background-color 120ms ease;
+}
+
+.rad-split__left {
+  padding: 6px var(--rd-sys-spacing-b) 6px var(--rd-sys-spacing-d); /* 6px 8px 6px 16px */
+  border-radius: var(--rd-sys-radius-16) 1px 1px var(--rd-sys-radius-16);
+  font-size: var(--rd-sys-type-body-size);
+  line-height: var(--rd-sys-type-body-line);
+  letter-spacing: var(--rd-sys-type-body-tracking);
+}
+.rad-split__right {
+  width: 36px;
+  padding: var(--rd-sys-spacing-b); /* 8px */
+  border-radius: 1px var(--rd-sys-radius-16) var(--rd-sys-radius-16) 1px;
+}
+.rad-split__icon,
+.rad-split__caret {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 0;
+}
+
+/* -------- Primary -------- */
+.rad-split--primary .rad-split__left,
+.rad-split--primary .rad-split__right {
+  background: var(--rd-sys-color-button-background-primary-default);
+  color: var(--rd-sys-color-content-inverse);
+}
+.rad-split--primary .rad-split__left:hover {
+  background: var(--rd-sys-color-button-background-primary-hover);
+}
+.rad-split--primary .rad-split__right:hover {
+  background: var(--rd-sys-color-button-background-primary-hover);
+}
+.rad-split--primary.rad-split--open .rad-split__right {
+  background: var(--rd-sys-color-button-background-primary-pressed);
+}
+
+/* -------- Secondary -------- */
+.rad-split--secondary .rad-split__left,
+.rad-split--secondary .rad-split__right {
+  background: var(--rd-sys-color-button-background-secondary-default);
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-split--secondary .rad-split__left:hover {
+  background: var(--rd-sys-color-button-background-secondary-hover);
+}
+.rad-split--secondary .rad-split__right:hover {
+  background: var(--rd-sys-color-button-background-secondary-hover);
+}
+.rad-split--secondary.rad-split--open .rad-split__right {
+  background: var(--rd-sys-color-button-background-secondary-pressed);
+}
+
+/* Disabled */
+.rad-split__left:disabled,
+.rad-split__right:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* -------- Dropdown menu (Elevation/Menu) -------- */
+.rad-split__menu {
+  position: absolute;
+  left: 0;
+  min-width: 116px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  padding: var(--rd-sys-spacing-a);
+  background: var(--rd-sys-color-bg-raised);
+  border-radius: var(--rd-sys-radius-6);
+  box-shadow: var(--rd-sys-elevation-menu);
+}
+.rad-split__menu--bottom { top: calc(100% + 4px); }
+.rad-split__menu--top { bottom: calc(100% + 4px); }
+
+.rad-split__menuitem {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  padding: var(--rd-sys-spacing-b) var(--rd-sys-spacing-c);
+  border-radius: var(--rd-sys-radius-4);
+  font-family: var(--rd-sys-font-family);
+  font-size: var(--rd-sys-type-body-size);
+  line-height: var(--rd-sys-type-body-line);
+  color: var(--rd-sys-color-content-primary);
+  white-space: nowrap;
+}
+.rad-split__menuitem:hover {
+  background: var(--rd-sys-color-bg-ghost-hover);
+}
+
+.rad-split__left:focus-visible,
+.rad-split__right:focus-visible {
+  outline: 2px solid var(--rd-sys-color-border-focus);
+  outline-offset: 1px;
+  position: relative;
+  z-index: 1;
+}

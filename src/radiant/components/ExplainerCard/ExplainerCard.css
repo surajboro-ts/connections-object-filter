@@ -1,0 +1,76 @@
+/**
+ * Radiant — Explainer card (Figma "Explainer card" 18310:23047).
+ *
+ *   Card      — 340px fixed, padding 20 (E), gap 12 (C), radius 6, bg Raised,
+ *               Elevation/Menu.
+ *   Titled    — column: [title · dismiss] / body / media / actions.
+ *   Compact   — row: [body · dismiss]. No title, media or actions; this is the
+ *               hover form, so it usually has no dismiss either.
+ *   Media     — Gray/10A, radius 6, full content width. Empty it holds the
+ *               spec's 170px placeholder; with content it sizes to it.
+ *   Actions   — right-aligned, gap 16 (D); small Tertiary + small Primary.
+ */
+.rad-explainer {
+  box-sizing: border-box;
+  display: flex;
+  gap: var(--rd-sys-spacing-c); /* 12px */
+  align-items: flex-start;
+  width: 340px;
+  min-width: 340px;
+  max-width: 340px;
+  padding: var(--rd-sys-spacing-e); /* 20px */
+  background: var(--rd-sys-color-bg-raised);
+  border-radius: var(--rd-sys-radius-6);
+  box-shadow: var(--rd-sys-elevation-menu);
+}
+.rad-explainer--titled { flex-direction: column; }
+
+/* Title row — the title takes the width the dismiss button leaves. */
+.rad-explainer__head {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c);
+  width: 100%;
+}
+.rad-explainer__title {
+  flex: 1 1 0;
+  min-width: 0;
+  color: var(--rd-sys-color-content-primary);
+}
+
+.rad-explainer__body { color: var(--rd-sys-color-content-primary); }
+.rad-explainer--titled .rad-explainer__body { width: 100%; }
+/* Compact: body beside the dismiss — 264px at the spec's 340 card. */
+.rad-explainer--compact .rad-explainer__body { flex: 1 1 auto; min-width: 0; }
+/* Opt-in line cap (maxLines); -webkit-line-clamp is the cross-browser spelling. */
+.rad-explainer__body[data-clamp] {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rad-explainer__media {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--rad-gray-10a); /* Figma Color/Gray/10A — no semantic alias for it */
+  border-radius: var(--rd-sys-radius-6);
+  overflow: hidden;
+}
+.rad-explainer__media:empty { height: 170px; } /* the spec's placeholder block */
+
+.rad-explainer__actions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: var(--rd-sys-spacing-d); /* 16px */
+  width: 100%;
+}
+
+/* The dismiss never shrinks; in the compact form it sits against the first body line. */
+.rad-explainer > .rad-iconbtn,
+.rad-explainer__head .rad-iconbtn { flex: none; }
+/* Drawn in Content/Primary, not the ghost button's muted secondary — the spec
+   gives the card's dismiss the same weight as its title. Activate still goes brand. */
+.rad-explainer .rad-iconbtn--ghost { color: var(--rd-sys-color-content-primary); }
+.rad-explainer .rad-iconbtn--ghost:active,
+.rad-explainer .rad-iconbtn--ghost[data-force-state='activated'] { color: var(--rd-sys-color-content-brand); }

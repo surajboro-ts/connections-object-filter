@@ -1,0 +1,64 @@
+/**
+ * Radiant — Typography
+ * Font: Geist (loaded from Google Fonts in index.html). Text scale uses
+ * 400 (regular) and 600 (medium) in HTML; <b> uses 700 to bold a word.
+ * (Figma renders these as Light 375 / Medium 600 — HTML uses 400 / 600.)
+ */
+
+:root {
+  --rd-sys-font-family: 'Geist', -apple-system, 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --rd-sys-font-family-mono: 'Geist Mono', ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+
+  --rd-sys-font-weight-regular: 400;
+  --rd-sys-font-weight-medium: 600;
+  --rd-sys-font-weight-bold: 700;
+
+  /* Per-style size / line-height / letter-spacing tokens (weights via the tokens above).
+     Letter-spacing confirmed from the live Figma where available; values marked
+     (infer) follow the family pattern and should be confirmed from the type node. */
+  --rd-sys-type-h1-size: 32px;   --rd-sys-type-h1-line: 40px;   --rd-sys-type-h1-tracking: -0.4px; /* Display — Large Headline (infer) */
+  --rd-sys-type-h2-size: 24px;   --rd-sys-type-h2-line: 32px;   --rd-sys-type-h2-tracking: -0.4px; /* Title — Page Title */
+  --rd-sys-type-h3-size: 20px;   --rd-sys-type-h3-line: 28px;   --rd-sys-type-h3-tracking: -0.4px; /* Title — Modal Title */
+  --rd-sys-type-h4-size: 18px;   --rd-sys-type-h4-line: 24px;   --rd-sys-type-h4-tracking: -0.4px; /* Label — Section Label (infer) */
+  --rd-sys-type-h5-size: 16px;   --rd-sys-type-h5-line: 24px;   --rd-sys-type-h5-tracking: -0.4px; /* Label — Content Label */
+  --rd-sys-type-subhead-size: 14px; --rd-sys-type-subhead-line: 20px; --rd-sys-type-subhead-tracking: 0; /* Label — Content Label Subhead */
+  --rd-sys-type-body-large-size: 16px; --rd-sys-type-body-large-line: 24px; --rd-sys-type-body-large-tracking: 0; /* Body — Large (p-large) (infer) */
+  --rd-sys-type-body-size: 14px; --rd-sys-type-body-line: 20px; --rd-sys-type-body-tracking: 0; /* Body — Normal (p) */
+  --rd-sys-type-caption-size: 12px; --rd-sys-type-caption-line: 18px; --rd-sys-type-caption-tracking: -0.6px; /* Footnote / Caption / Overline */
+}
+
+/* ---- Text style utility classes ---- */
+.rd-display-large,
+.rd-title-page,
+.rd-title-modal,
+.rd-label-section,
+.rd-label-content,
+.rd-label-subhead {
+  font-family: var(--rd-sys-font-family);
+  font-weight: var(--rd-sys-font-weight-medium);
+  margin: 0;
+}
+
+.rd-body-large,
+.rd-body,
+.rd-caption {
+  font-family: var(--rd-sys-font-family);
+  font-weight: var(--rd-sys-font-weight-regular);
+  margin: 0;
+}
+
+.rd-display-large { font-size: var(--rd-sys-type-h1-size); line-height: var(--rd-sys-type-h1-line); letter-spacing: var(--rd-sys-type-h1-tracking); }
+.rd-title-page    { font-size: var(--rd-sys-type-h2-size); line-height: var(--rd-sys-type-h2-line); letter-spacing: var(--rd-sys-type-h2-tracking); }
+.rd-title-modal   { font-size: var(--rd-sys-type-h3-size); line-height: var(--rd-sys-type-h3-line); letter-spacing: var(--rd-sys-type-h3-tracking); }
+.rd-label-section { font-size: var(--rd-sys-type-h4-size); line-height: var(--rd-sys-type-h4-line); letter-spacing: var(--rd-sys-type-h4-tracking); }
+.rd-label-content { font-size: var(--rd-sys-type-h5-size); line-height: var(--rd-sys-type-h5-line); letter-spacing: var(--rd-sys-type-h5-tracking); }
+.rd-label-subhead { font-size: var(--rd-sys-type-subhead-size); line-height: var(--rd-sys-type-subhead-line); letter-spacing: var(--rd-sys-type-subhead-tracking); }
+.rd-body-large    { font-size: var(--rd-sys-type-body-large-size); line-height: var(--rd-sys-type-body-large-line); letter-spacing: var(--rd-sys-type-body-large-tracking); }
+.rd-body          { font-size: var(--rd-sys-type-body-size); line-height: var(--rd-sys-type-body-line); letter-spacing: var(--rd-sys-type-body-tracking); }
+.rd-caption       { font-size: var(--rd-sys-type-caption-size); line-height: var(--rd-sys-type-caption-line); letter-spacing: var(--rd-sys-type-caption-tracking); }
+
+/* Bold a single word inside a sentence */
+.rd-body b, .rd-body-large b, .rd-caption b,
+.rd-label-subhead b, .rd-label-content b {
+  font-weight: var(--rd-sys-font-weight-bold);
+}

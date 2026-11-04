@@ -1,0 +1,28 @@
+/** Radiant — Shimmer / skeleton. A base fill with a highlight that sweeps left→right. */
+.rad-shimmer {
+  display: block;
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  background-position: 150% 0;
+  animation: rad-shimmer 1.4s ease-in-out infinite;
+}
+
+/* normal — light gray (base #EAEDF2, highlight #F6F8FA) */
+.rad-shimmer--normal {
+  background-color: #eaedf2;
+  background-image: linear-gradient(90deg, transparent 0%, #f6f8fa 50%, transparent 100%);
+}
+/* dark — (base #323946, highlight #4A515E) */
+.rad-shimmer--dark {
+  background-color: #323946;
+  background-image: linear-gradient(90deg, transparent 0%, #4a515e 50%, transparent 100%);
+}
+/* AI — gray base with a bluish highlight (#DEE8FA) */
+.rad-shimmer--ai {
+  background-color: #eaedf2;
+  background-image: linear-gradient(90deg, transparent 0%, #dee8fa 50%, transparent 100%);
+}
+
+@keyframes rad-shimmer {
+  to { background-position: -50% 0; }
+}

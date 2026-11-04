@@ -1,0 +1,18 @@
+/** Radiant — Tag (outlined). Exact from Figma "Tag" (17763:20960):
+    padding 2px 4px, radius 4px, 1px blue-60 border, Body/Normal 14px text. */
+.rad-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 2px var(--rd-sys-spacing-a); /* 2px 4px */
+  border: 1px solid var(--rd-sys-color-content-brand);
+  border-radius: var(--rd-sys-radius-4);
+  color: var(--rd-sys-color-content-primary);
+  background: var(--rd-sys-color-bg-base);
+  font-family: var(--rd-sys-font-family);
+  font-size: var(--rd-sys-type-body-size); /* 14px */
+  line-height: var(--rd-sys-type-body-line);
+  font-weight: var(--rd-sys-font-weight-regular);
+  white-space: nowrap;
+}

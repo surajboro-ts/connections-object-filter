@@ -1,0 +1,11 @@
+/** Radiant — Divider. 1px subtle horizontal rule. */
+.rad-divider {
+  height: 1px;
+  border: none;
+  margin: 0;
+  background: var(--rd-sys-color-border-subtle);
+  /* A divider must never be squished: inside a flex column that overflows, the
+     browser would otherwise shrink this content-less 1px item to 0 (flex-shrink
+     defaults to 1) and the rule would vanish for tall content only. */
+  flex-shrink: 0;
+}

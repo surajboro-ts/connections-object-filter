@@ -1,0 +1,128 @@
+/**
+ * Radiant — Primitive Color Palette
+ * The raw, un-themed color values. These are the ONLY place hex lives.
+ * Nothing in the app references these directly — semantic tokens map onto them.
+ * Faithful to Figma: "Primitive Color Palette".
+ */
+
+:root {
+  /* ---- Gray ---- */
+  --rad-gray-100: #000000;
+  --rad-gray-90: #1d232f;
+  --rad-gray-80: #323946;
+  --rad-gray-70: #4a515e;
+  --rad-gray-60: #777e8b;
+  --rad-gray-50: #a5acb9;
+  --rad-gray-40: #c0c6cf;
+  --rad-gray-30: #dbdfe7;
+  --rad-gray-20: #eaedf2;
+  --rad-gray-10: #f6f8fa;
+  --rad-gray-0: #ffffff;
+  /* Gray — alpha */
+  --rad-gray-70a: rgba(31, 38, 50, 0.8); /* 70A · #1F2632 @ 80% */
+  --rad-gray-60a: rgba(32, 41, 58, 0.6); /* 60A · #20293A @ 60% */
+  --rad-gray-40a: rgba(22, 34, 58, 0.26); /* 40A · #16223A @ 26% */
+  --rad-gray-10a: rgba(192, 198, 207, 0.12); /* 10A · #C0C6CF @ 12% */
+
+  /* ---- Dark Gray ---- */
+  --rad-darkgray-90: #dfe0e2;
+  --rad-darkgray-80: #c7c9cc;
+  --rad-darkgray-70: #afb2b6;
+  --rad-darkgray-60: #9a9ea2;
+  --rad-darkgray-50: #7a7d85;
+  --rad-darkgray-40: #5d636a;
+  --rad-darkgray-30: #46494e;
+  --rad-darkgray-20: #34363c;
+  --rad-darkgray-15: #2d2f34;
+  --rad-darkgray-10: #26282c;
+  --rad-darkgray-5: #1f2024;
+  --rad-darkgray-0: #131416;
+  /* Dark Gray — alpha */
+  --rad-darkgray-30a: rgba(0, 3, 10, 0.73); /* 30A · #00030A @ 73% */
+
+  /* ---- Red ---- */
+  --rad-red-100: #1f0003;
+  --rad-red-90: #3d090e;
+  --rad-red-80: #721f27;
+  --rad-red-70: #b6313e;
+  --rad-red-60: #e22b3d;
+  --rad-red-50: #f47e89;
+  --rad-red-40: #f9b3b9;
+  --rad-red-30: #fcd4d7;
+  --rad-red-20: #ffebec;
+  --rad-red-10: #fff0f0;
+
+  /* ---- Purple ---- */
+  --rad-purple-100: #0e0033;
+  --rad-purple-90: #210f4f;
+  --rad-purple-80: #422e75;
+  --rad-purple-70: #6a4aba;
+  --rad-purple-60: #8c62f5;
+  --rad-purple-50: #b094f8;
+  --rad-purple-40: #d1c0fb;
+  --rad-purple-30: #e3d9fc;
+  --rad-purple-20: #f0ebff;
+  --rad-purple-10: #f7f5ff;
+
+  /* ---- Blue ---- */
+  --rad-blue-100: #001740;
+  --rad-blue-90: #082559;
+  --rad-blue-80: #163772;
+  --rad-blue-70: #2359b6;
+  --rad-blue-60: #2770ef;
+  --rad-blue-50: #71a1f4;
+  --rad-blue-40: #abc7f9;
+  --rad-blue-30: #cedcf5;
+  --rad-blue-20: #dee8fa;
+  --rad-blue-10: #f2f7ff;
+  /* Blue — alpha */
+  --rad-blue-10a: rgba(242, 247, 255, 0.12); /* 10A · #F2F7FF @ 12% */
+
+  /* ---- Teal ---- */
+  --rad-teal-100: #002d33;
+  --rad-teal-90: #0c3f45;
+  --rad-teal-80: #22636b;
+  --rad-teal-70: #369faa;
+  --rad-teal-60: #48d1e0;
+  --rad-teal-50: #82dfe9;
+  --rad-teal-40: #b5ecf2;
+  --rad-teal-30: #c9f0f5;
+  --rad-teal-20: #e1f7fa;
+  --rad-teal-10: #edfdff;
+
+  /* ---- Yellow ---- */
+  --rad-yellow-100: #2e2200;
+  --rad-yellow-90: #4f3d09;
+  --rad-yellow-80: #785f1a;
+  --rad-yellow-70: #bf982a;
+  --rad-yellow-60: #fcc838;
+  --rad-yellow-50: #fcd977;
+  --rad-yellow-40: #fde9af;
+  --rad-yellow-30: #fcf1d1;
+  --rad-yellow-20: #fff8e5;
+  --rad-yellow-10: #fffbf0;
+
+  /* ---- Green ---- */
+  --rad-green-100: #001f14;
+  --rad-green-90: #003b26;
+  --rad-green-80: #025b3c;
+  --rad-green-70: #049160;
+  --rad-green-60: #06bf7f;
+  --rad-green-50: #56d3a8;
+  --rad-green-40: #9be5cb;
+  --rad-green-30: #c7f2e3;
+  --rad-green-20: #e0f8ef;
+  --rad-green-10: #edfff9;
+
+  /* ---- Orange ---- */
+  --rad-orange-100: #331100;
+  --rad-orange-90: #471f0b;
+  --rad-orange-80: #7a3d1f;
+  --rad-orange-70: #c26232;
+  --rad-orange-60: #ff8142;
+  --rad-orange-50: #ffa97e;
+  --rad-orange-40: #ffccb3;
+  --rad-orange-30: #ffddcc;
+  --rad-orange-20: #ffeee5;
+  --rad-orange-10: #fff5f0;
+}

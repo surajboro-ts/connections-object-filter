@@ -1,0 +1,16 @@
+/** Radiant — Contextual spinner. A 3/4 arc that rotates. */
+.rad-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  animation: rad-spin 0.7s linear infinite;
+}
+.rad-spinner svg { display: block; }
+.rad-spinner--blue { color: var(--rd-sys-color-content-brand); }   /* #2770EF */
+.rad-spinner--gray { color: var(--rd-sys-color-border-bold); }     /* #C0C6CF */
+.rad-spinner--white { color: #ffffff; }
+
+@keyframes rad-spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,103 @@
+.wz {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--rd-sys-color-bg-base);
+}
+
+/* ---------------------------------------------------------------- Header */
+.wz__header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--rd-sys-color-border-subtle);
+}
+
+.wz__header-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.wz__header-badge {
+  flex: 0 0 auto;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--rd-sys-color-content-failure);
+  color: var(--rd-sys-color-content-inverse);
+  font-size: var(--rd-sys-type-h4-size);
+  line-height: 1;
+  font-weight: var(--rd-sys-font-weight-bold);
+}
+
+.wz__overline {
+  color: var(--rd-sys-color-content-secondary);
+}
+
+.wz__title {
+  margin: 0;
+  color: var(--rd-sys-color-content-primary);
+}
+
+/* ------------------------------------------------------------------ Body */
+.wz__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 24px;
+}
+
+/* Split layout (Select tables): sidebar + content fill the body edge-to-edge. */
+.wz__body--split {
+  padding: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------- Footer */
+.wz__footer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--rd-sys-color-bg-base);
+}
+
+.wz__progress {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  height: 3px;
+}
+
+.wz__seg {
+  flex: 1 1 0;
+  border-radius: 2px;
+  background: var(--rd-sys-color-border-subtle);
+}
+
+.wz__seg.is-filled {
+  background: var(--rd-sys-color-bg-brand);
+}
+
+.wz__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+}
+
+.wz__cancel {
+  cursor: pointer;
+  user-select: none;
+}
+
+.wz__actions-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

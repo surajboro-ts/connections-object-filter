@@ -1,0 +1,142 @@
+/**
+ * Radiant — Menu / Dropdown list. From the "Single line", "_Utils/ Single line
+ * List item", "_Utils/ Two line list item" and "Menu" Figma sets.
+ *   Surface — white, radius-6, Elevation/Menu, 8px vertical padding.
+ *   Item    — row, pad 6px 16px, gap 12px; hover = ghost-hover (gray@12%),
+ *             activated = ghost-highlight (blue@12%) + brand label, disabled = 0.4.
+ */
+
+/* ---------------- Surface ---------------- */
+.rad-menu {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: var(--rd-sys-color-bg-base);
+  border-radius: var(--rd-sys-radius-6);
+  box-shadow: var(--rd-sys-elevation-menu);
+  overflow: hidden; /* clip the flush search bar to the rounded corners */
+  min-width: 172px;
+  font-family: var(--rd-sys-font-family);
+}
+/* Search sits flush at the top; the SearchBar's own underline is the divider. */
+.rad-menu__search { display: block; }
+.rad-menu__search .rad-field { width: 100%; }
+.rad-menu__list {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: var(--rd-sys-spacing-b) 0; /* 8px top/bottom (Figma list frame) */
+}
+.rad-menu__list--scroll { overflow-y: auto; }
+
+/* ---------------- Single-line item ---------------- */
+.rad-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c);
+  padding: 6px var(--rd-sys-spacing-d); /* Figma: 6px 16px → 32px row on a 20px line */
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  color: var(--rd-sys-color-content-primary);
+  transition: background-color 100ms ease;
+}
+.rad-menu-item:hover { background: var(--rd-sys-color-bg-ghost-hover); }
+.rad-menu-item.is-activated { background: var(--rd-sys-color-bg-ghost-highlight); }
+.rad-menu-item.is-activated .rad-menu-item__label,
+.rad-menu-item.is-activated .rad-menu-item__num { color: var(--rd-sys-color-content-brand); }
+.rad-menu-item:disabled,
+.rad-menu-item.is-disabled { opacity: 0.4; cursor: not-allowed; }
+.rad-menu-item:disabled:hover,
+.rad-menu-item.is-disabled:hover { background: transparent; }
+
+.rad-menu-item__icon {
+  display: inline-flex;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-menu-item__label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-menu-item__num {
+  flex: none;
+  margin-left: auto;
+  color: var(--rd-sys-color-content-secondary);
+  font-variant-numeric: tabular-nums;
+}
+/* a trailing number after a fill label doesn't need the auto margin */
+.rad-menu-item__label + .rad-menu-item__num { margin-left: var(--rd-sys-spacing-c); }
+.rad-menu-item__chevron {
+  display: inline-flex;
+  flex: none;
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  color: var(--rd-sys-color-content-secondary);
+}
+.rad-menu-item__label + .rad-menu-item__chevron { margin-left: var(--rd-sys-spacing-c); }
+.rad-menu-item__check { flex: none; }
+
+/* ---------------- Two-line item ---------------- */
+.rad-menu-item--two {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 5px var(--rd-sys-spacing-d);
+}
+.rad-menu-item__title {
+  color: var(--rd-sys-color-content-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rad-menu-item__sub {
+  color: var(--rd-sys-color-content-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rad-menu-item--two.is-activated .rad-menu-item__title,
+.rad-menu-item--two.is-activated .rad-menu-item__sub { color: var(--rd-sys-color-content-brand); }
+
+/* ---------------- Section title ---------------- */
+/* Label/Content Label Subhead — normal case, medium 14px (NOT small-caps). */
+.rad-menu-section {
+  padding: 6px var(--rd-sys-spacing-d);
+  color: var(--rd-sys-color-content-primary);
+}
+
+/* ---------------- Divider ---------------- */
+.rad-menu-divider {
+  height: 1px;
+  background: var(--rd-sys-color-border-subtle);
+  border: none;
+  margin: var(--rd-sys-spacing-b) 0;
+}
+
+/* ---------------- Clear-selection footer ---------------- */
+.rad-menu__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40px;
+  padding: 0 var(--rd-sys-spacing-c);
+  border-top: 1px solid var(--rd-sys-color-border-subtle);
+  margin-top: var(--rd-sys-spacing-b);
+}
+
+/* ---------------- No results ---------------- */
+.rad-menu__empty {
+  padding: 6px var(--rd-sys-spacing-d);
+  color: var(--rd-sys-color-content-secondary);
+  text-align: left;
+}

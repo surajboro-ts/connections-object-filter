@@ -1,0 +1,28 @@
+/** Radiant — Breadcrumb (20401:11320). Back arrow (in a subtle circle) + parent title. */
+.rad-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-b); /* 8px */
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--rd-sys-color-content-secondary);
+  cursor: pointer;
+  font-family: var(--rd-sys-font-family);
+}
+.rad-breadcrumb__back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--rd-sys-color-bg-secondary-action);
+  color: var(--rd-sys-color-content-primary);
+  flex: none;
+  transition: background 100ms ease;
+}
+.rad-breadcrumb:hover .rad-breadcrumb__back { background: var(--rd-sys-color-chip-filter-hover); }
+.rad-breadcrumb__label { color: var(--rd-sys-color-content-secondary); }
+.rad-breadcrumb:hover .rad-breadcrumb__label { color: var(--rd-sys-color-content-primary); }

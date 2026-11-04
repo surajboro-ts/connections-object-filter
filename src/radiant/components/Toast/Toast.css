@@ -1,0 +1,51 @@
+/** Radiant — Toast (Figma 15938:16564). Dark inverse bar with menu elevation. */
+.rad-toast {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-l, 32px); /* 32px between content and dismiss */
+  box-sizing: border-box;
+  padding: var(--rd-sys-spacing-d); /* 16px */
+  background: var(--rd-sys-color-bg-inverse); /* #323946 */
+  border-radius: var(--rd-sys-radius-6);
+  box-shadow: var(--rd-sys-elevation-menu);
+  /* Toasts are always a single line — never wrap. */
+  white-space: nowrap;
+}
+.rad-toast__label { white-space: nowrap; }
+.rad-toast__main { display: inline-flex; align-items: center; gap: var(--rd-sys-spacing-d); /* 16px */ }
+.rad-toast__msg { display: inline-flex; align-items: center; gap: var(--rd-sys-spacing-c); /* 12px */ }
+.rad-toast__icon { display: inline-flex; align-items: center; color: var(--rd-sys-color-content-inverse); }
+.rad-toast__text { display: inline-flex; align-items: center; gap: var(--rd-sys-spacing-a); /* 4px */ }
+.rad-toast__label { color: var(--rd-sys-color-content-inverse); }
+.rad-toast__link {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--rd-sys-color-content-inverse);
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* White pill action button. */
+.rad-toast__action {
+  border: none;
+  cursor: pointer;
+  padding: 3px var(--rd-sys-spacing-c); /* 3px 12px */
+  border-radius: var(--rd-sys-radius-12);
+  background: var(--rd-sys-color-bg-base);
+  color: var(--rd-sys-color-content-primary);
+  white-space: nowrap;
+}
+.rad-toast__dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  color: var(--rd-sys-color-content-inverse);
+  cursor: pointer;
+  opacity: 0.9;
+  flex: none;
+}
+.rad-toast__dismiss:hover { opacity: 1; }

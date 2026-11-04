@@ -1,0 +1,62 @@
+/** Radiant — utility search bar with rolling placeholder (Figma 21498:18619). */
+.rad-navsearch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-b); /* ~8-10px icon → text */
+  width: 256px;
+  height: 32px;
+  padding: 0 var(--rd-sys-spacing-c); /* 12px sides */
+  border: none;
+  border-radius: var(--rd-sys-radius-16);
+  background: var(--rd-sys-color-button-background-secondary-default);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+  box-sizing: border-box;
+}
+.rad-navsearch:hover { background: var(--rd-sys-color-button-background-secondary-hover); }
+.rad-navsearch__icon { color: var(--rd-sys-color-content-secondary); flex: none; }
+
+/* The 20px window that clips the rolling track. */
+.rad-navsearch__roll {
+  flex: 1 1 auto;
+  height: 20px;
+  overflow: hidden;
+  text-align: left;
+}
+.rad-navsearch__track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+.rad-navsearch__phrase {
+  height: 20px;
+  line-height: 20px;
+  font-family: var(--rd-sys-font-family);
+  font-size: 14px; /* Body / Normal */
+  letter-spacing: 0;
+  color: var(--rd-sys-color-content-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ⌘K keys — outlined (Figma 24497:13153): 20px tall, 1px border-accent-gray,
+   12px symbol in content-secondary. ⌘ key is 22px wide, the letter key 20px. */
+.rad-navsearch__kbd { display: inline-flex; gap: 2px; flex: none; }
+.rad-navsearch__kbd kbd {
+  box-sizing: border-box;
+  font-family: var(--rd-sys-font-family);
+  font-size: 12px;
+  line-height: 18px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid var(--rd-sys-color-border-accent-gray);
+  background: transparent;
+  color: var(--rd-sys-color-content-secondary);
+}
+.rad-navsearch__kbd kbd:first-child { min-width: 22px; } /* the ⌘ key */

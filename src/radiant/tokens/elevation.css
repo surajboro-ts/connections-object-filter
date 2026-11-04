@@ -1,0 +1,24 @@
+/**
+ * Radiant — Elevations
+ * Three levels. Every elevation is a two-layer shadow: a tight ambient layer
+ * plus a directional layer. Values are the exact box-shadows from Figma
+ * "Elevations". Light base color is #192331; dark is #000000.
+ *
+ * This is the authoritative shadow spec — it supersedes the opacity values in
+ * the color doc's "Shadow" section (which were kept as color-only tokens).
+ */
+
+:root {
+  /* Elevation/100 — smallest lift (toggle thumb, segmented active pill). Two identical layers. */
+  --rd-sys-elevation-100: 0 2px 4px 0 rgba(25, 35, 49, 0.04), 0 2px 4px 0 rgba(25, 35, 49, 0.04);
+  --rd-sys-elevation-surface: 0 0 4px 0 rgba(25, 35, 49, 0.1), 0 2px 4px 0 rgba(25, 35, 49, 0.04);
+  --rd-sys-elevation-menu: 0 0 4px 0 rgba(25, 35, 49, 0.08), 0 12px 24px 0 rgba(25, 35, 49, 0.12);
+  --rd-sys-elevation-modal: 0 0 4px 0 rgba(25, 35, 49, 0.1), 0 24px 32px 0 rgba(25, 35, 49, 0.16);
+}
+
+[data-theme='dark'] {
+  --rd-sys-elevation-100: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  --rd-sys-elevation-surface: 0 0 4px 0 rgba(0, 0, 0, 0.4), 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+  --rd-sys-elevation-menu: 0 0 4px 0 rgba(0, 0, 0, 0.32), 0 12px 24px 0 rgba(0, 0, 0, 0.48);
+  --rd-sys-elevation-modal: 0 0 4px 0 rgba(0, 0, 0, 0.4), 0 24px 32px 0 rgba(0, 0, 0, 0.64);
+}

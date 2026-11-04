@@ -1,0 +1,114 @@
+/**
+ * Radiant — Field (shared input scaffold). From "Text input" (361:14470).
+ *   Label row — 12px caption; primary, blue on focus, red on error (+ icon).
+ *   Box — 32px min-height, padding 6px 12px 6px 16px, radius 6, 1px border.
+ *   States — default border-bold, hover border-bold-hover, focus brand,
+ *            error failure, read-only sunken bg (no border), disabled 40%.
+ */
+
+.rad-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rd-sys-spacing-a); /* 4px */
+  font-family: var(--rd-sys-font-family);
+}
+
+.rad-field__label-row {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-a);
+}
+.rad-field__label {
+  font-size: var(--rd-sys-type-caption-size); /* 12px */
+  line-height: var(--rd-sys-type-caption-line);
+  letter-spacing: var(--rd-sys-type-caption-tracking);
+  font-weight: var(--rd-sys-font-weight-medium); /* "Label" is semibold (Figma) */
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-field__helper {
+  font-size: var(--rd-sys-type-caption-size);
+  line-height: var(--rd-sys-type-caption-line);
+  letter-spacing: var(--rd-sys-type-caption-tracking);
+  color: var(--rd-sys-color-content-secondary);
+}
+.rad-field__erricon {
+  display: inline-flex;
+  color: var(--rd-sys-color-content-failure);
+}
+
+/* Box */
+.rad-field__box {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c); /* 12px */
+  box-sizing: border-box;
+  min-height: 32px;
+  padding: 6px 12px 6px var(--rd-sys-spacing-d); /* 6px 12px 6px 16px */
+  background: var(--rd-sys-color-bg-base);
+  border: 1px solid var(--rd-sys-color-border-bold);
+  border-radius: var(--rd-sys-radius-6);
+  transition: border-color 100ms ease;
+}
+.rad-field__box:hover {
+  border-color: var(--rd-sys-color-border-bold-hover);
+}
+.rad-field:focus-within .rad-field__box,
+.rad-field--active .rad-field__box {
+  border-color: var(--rd-sys-color-border-brand);
+}
+
+/* Controls inside the box */
+.rad-field__box input,
+.rad-field__box textarea {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font-family: var(--rd-sys-font-family);
+  font-size: var(--rd-sys-type-body-size); /* 14px */
+  line-height: var(--rd-sys-type-body-line);
+  color: var(--rd-sys-color-content-primary);
+  resize: none;
+}
+/* Override the legacy global `input:focus` blue ring (index.css) — Radiant fields
+   signal focus with the box border only. Needs :focus to outrank `input:focus`. */
+.rad-field__box input:focus,
+.rad-field__box textarea:focus { box-shadow: none; }
+.rad-field__box input::placeholder,
+.rad-field__box textarea::placeholder {
+  color: var(--rd-sys-color-content-secondary);
+}
+.rad-field__box .rad-field__icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--rd-sys-color-content-secondary);
+  font-size: 16px;
+  flex: none;
+}
+
+/* Focus — label turns blue */
+.rad-field:focus-within .rad-field__label,
+.rad-field--active .rad-field__label {
+  color: var(--rd-sys-color-content-brand);
+}
+
+/* Error */
+.rad-field--error .rad-field__label { color: var(--rd-sys-color-content-failure); }
+.rad-field--error .rad-field__box { border-color: var(--rd-sys-color-border-failure); }
+.rad-field--error:focus-within .rad-field__box { border-color: var(--rd-sys-color-border-failure); }
+
+/* Read only — sunken fill, no border */
+.rad-field--readonly .rad-field__box {
+  background: var(--rd-sys-color-bg-sunken);
+  border-color: transparent;
+}
+
+/* Disabled — whole field at 40% */
+.rad-field--disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}

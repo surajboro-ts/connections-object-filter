@@ -1,0 +1,62 @@
+/**
+ * Radiant — Toggle. Exact geometry from the Figma "Toggle/Utils" SVG:
+ *   switch 28×16 · track 28×8 (radius 4) · thumb 16px overhanging the track.
+ *   Off  — track #C0C6CF, white thumb + 1px #DBDFE7 ring, Elevation/100.
+ *   On   — track #CEDCF5, solid #2770EF thumb (no ring), thumb travels 12px.
+ *   Disabled — whole switch (and label) at 40%.
+ */
+.rad-toggle { position: relative; display: inline-flex; width: 28px; height: 16px; flex: none; }
+.rad-toggle__input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; z-index: 1; }
+
+.rad-toggle__track {
+  position: absolute;
+  top: 4px; /* (16 - 8) / 2 */
+  left: 0;
+  width: 28px;
+  height: 8px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: var(--rd-sys-color-toggle-track-off);
+  transition: background-color 120ms ease;
+}
+.rad-toggle__thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--rd-sys-color-toggle-thumb-off);
+  border: 1px solid var(--rd-sys-color-toggle-thumb-outline-off);
+  box-shadow: var(--rd-sys-elevation-100);
+  transition: transform 120ms ease, background-color 120ms ease, border-color 120ms ease;
+}
+.rad-toggle__input:checked ~ .rad-toggle__track {
+  background: var(--rd-sys-color-toggle-track-on);
+}
+.rad-toggle__input:checked ~ .rad-toggle__thumb {
+  transform: translateX(12px); /* 28 track − 16 thumb */
+  background: var(--rd-sys-color-toggle-thumb-on);
+  border-color: transparent;
+}
+.rad-toggle__input:focus-visible ~ .rad-toggle__track {
+  outline: 2px solid var(--rd-sys-color-border-focus);
+  outline-offset: 3px;
+}
+
+/* Disabled — dim the whole control (matches Figma's 40% on the component). */
+.rad-toggle.is-disabled,
+.rad-toggle-field.is-disabled { opacity: 0.4; }
+.rad-toggle.is-disabled,
+.rad-toggle.is-disabled .rad-toggle__input,
+.rad-toggle-field.is-disabled,
+.rad-toggle-field.is-disabled .rad-toggle__input { cursor: not-allowed; }
+
+.rad-toggle-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c); /* 12px */
+  cursor: pointer;
+}
+.rad-toggle-field__label { color: var(--rd-sys-color-content-primary); }

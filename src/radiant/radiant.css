@@ -1,0 +1,81 @@
+/**
+ * Radiant app shell + gallery scaffolding (not part of the component library —
+ * just the page that displays the components).
+ */
+
+.rad-root {
+  font-family: var(--rd-sys-font-family);
+  color: var(--rd-sys-color-content-primary);
+  background: var(--rd-sys-color-bg-base);
+  /* The shared index.css locks body scroll (overflow:hidden), so the Radiant
+     surface scrolls itself. */
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rad-gallery {
+  padding: var(--rd-sys-spacing-l) var(--rd-sys-spacing-l);
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.rad-gallery__head {
+  margin-bottom: var(--rd-sys-spacing-l);
+}
+.rad-gallery__section {
+  padding: var(--rd-sys-spacing-h) 0;
+  border-top: 1px solid var(--rd-sys-color-border-subtle);
+}
+.rad-gallery__subhead {
+  margin: var(--rd-sys-spacing-h) 0 var(--rd-sys-spacing-d);
+  color: var(--rd-sys-color-content-secondary);
+}
+
+.rad-spec-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.rad-spec-table th,
+.rad-spec-table td {
+  padding: var(--rd-sys-spacing-c) var(--rd-sys-spacing-f) var(--rd-sys-spacing-c) 0;
+  text-align: left;
+  vertical-align: middle;
+}
+.rad-spec-table thead th {
+  text-transform: capitalize;
+  color: var(--rd-sys-color-content-secondary);
+  font-weight: var(--rd-sys-font-weight-regular);
+  padding-bottom: var(--rd-sys-spacing-b);
+}
+.rad-spec-rowlabel {
+  color: var(--rd-sys-color-content-secondary);
+  white-space: nowrap;
+}
+
+.rad-muted { color: var(--rd-sys-color-content-secondary); }
+
+.rad-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--rd-sys-spacing-f);
+  align-items: start;
+  max-width: 820px;
+}
+.rad-form-col { display: flex; flex-direction: column; gap: var(--rd-sys-spacing-c); align-items: flex-start; }
+.rad-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--rd-sys-spacing-l);
+  align-items: start;
+}
+.rad-state-row { display: flex; align-items: center; gap: var(--rd-sys-spacing-d); flex-wrap: wrap; }
+
+/* Swatch strip for on-color (white colorway) demos */
+.rad-oncolor {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-d);
+  background: var(--rd-sys-color-bg-brand);
+  padding: var(--rd-sys-spacing-d) var(--rd-sys-spacing-f);
+  border-radius: var(--rd-sys-radius-12);
+}

@@ -1,0 +1,137 @@
+/** Radiant — SideNav. App-shell left rail: app switcher + title + sectioned list. */
+.rad-sidenav {
+  flex: none;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: var(--rd-sys-color-bg-on-base);
+  border-right: 1px solid var(--rd-sys-color-border-subtle);
+  overflow: hidden; /* the item list scrolls, not the whole rail */
+}
+
+/* App-switcher rail: each app is an equal-width tab. The selected tab takes the
+   panel colour, drops its bottom border and gains SQUARE side borders (skipped at
+   the rail edges) so it reads as a folder tab flowing into the panel below. */
+.rad-sidenav__apps {
+  flex: none;
+  display: flex;
+  align-items: stretch;
+  height: 54px;
+  padding: 0;
+  background: var(--rd-sys-color-bg-base);
+}
+/* Each tab is wrapped in a Tooltip trigger; make that the flex cell. */
+.rad-sidenav__apps > .rad-tooltip-trigger {
+  flex: 1 1 0;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+}
+.rad-sidenav__app {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid var(--rd-sys-color-border-subtle);
+  background: transparent;
+  color: var(--rd-sys-color-content-secondary);
+  cursor: pointer;
+  transition: color 100ms ease, background 100ms ease;
+}
+.rad-sidenav__app:hover { color: var(--rd-sys-color-content-primary); }
+.rad-sidenav__app.is-active {
+  background: var(--rd-sys-color-bg-on-base);
+  color: var(--rd-sys-color-content-primary);
+  border-bottom-color: transparent;
+  border-left: 1px solid var(--rd-sys-color-border-subtle);
+  border-right: 1px solid var(--rd-sys-color-border-subtle);
+}
+/* No left border when the selected tab is leftmost; no right border when rightmost. */
+.rad-sidenav__apps > .rad-tooltip-trigger:first-child .rad-sidenav__app.is-active { border-left: none; }
+.rad-sidenav__apps > .rad-tooltip-trigger:last-child .rad-sidenav__app.is-active { border-right: none; }
+
+.rad-sidenav__titlerow {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  margin-top: var(--rd-sys-spacing-d);
+  padding: 0 var(--rd-sys-spacing-f);
+}
+.rad-sidenav__title { color: var(--rd-sys-color-content-primary); }
+.rad-sidenav__add {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: none;
+  background: transparent; /* the icon is the outlined circled-plus itself */
+  color: var(--rd-sys-color-content-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.rad-sidenav__add:hover { color: var(--rd-sys-color-content-brand); }
+
+.rad-sidenav__list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  margin-top: var(--rd-sys-spacing-d);
+  padding-bottom: var(--rd-sys-spacing-c);
+  display: flex;
+  flex-direction: column;
+}
+/* Full-bleed 32px rows; label inset 24px. */
+.rad-navitem {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-b);
+  min-height: 32px;
+  padding: 0 var(--rd-sys-spacing-f);
+  color: var(--rd-sys-color-content-primary);
+  cursor: pointer;
+  /* An activatable row renders as a <button>; strip the UA styling so it reads
+     exactly as the non-interactive rows do. */
+  width: 100%;
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
+}
+/* Focus ring — Radiant focus border token. Inset so it is not clipped by the
+   rail's overflow on a full-bleed row. */
+.rad-navitem:focus-visible {
+  outline: 2px solid var(--rd-sys-color-border-focus);
+  outline-offset: -2px;
+}
+.rad-navitem:hover { background: var(--rd-sys-color-bg-ghost-hover); }
+.rad-navitem.is-active,
+.rad-navitem.is-active:hover { background: var(--rd-sys-color-bg-ghost-highlight); }
+.rad-navitem.is-active .rad-navitem__label { color: var(--rd-sys-color-content-brand); }
+/* Not flex:1 — so a trailing glyph (e.g. the external-link) sits 8px after the
+   label text (the row gap) instead of being pushed to the far edge. */
+.rad-navitem__label { flex: 0 1 auto; min-width: 0; color: inherit; }
+.rad-navitem__fav { flex: none; display: inline-flex; color: var(--rd-sys-color-content-secondary); }
+.rad-sidenav__ext { color: var(--rd-sys-color-content-primary); flex: none; }
+
+.rad-sidenav__section {
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  margin-top: var(--rd-sys-spacing-e); /* 20px between sections */
+  padding: 0 var(--rd-sys-spacing-f);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  /* Section headers are the exception: 10px Geist Mono. */
+  font-family: var(--rd-sys-font-family-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--rd-sys-color-content-secondary);
+}

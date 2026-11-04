@@ -1,0 +1,33 @@
+/** Radiant — Search bar. */
+.rad-searchbar input[type='search']::-webkit-search-cancel-button { display: none; }
+
+.rad-searchbar__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--rd-sys-color-content-secondary);
+  padding: 0;
+  flex: none;
+}
+.rad-searchbar__clear:hover { color: var(--rd-sys-color-content-primary); }
+/* Keep the slot (width) but hide it when the field is empty. */
+.rad-searchbar__clear.is-hidden { visibility: hidden; pointer-events: none; }
+
+/* Underline variant — bottom border only (Figma "Type=Underlined": #EAEDF2
+   subtle border, 10px 16px padding). Stays subtle on hover; brand on focus. */
+.rad-field__box--underline {
+  border: none;
+  border-bottom: 1px solid var(--rd-sys-color-border-subtle);
+  border-radius: 0;
+  padding: 10px var(--rd-sys-spacing-d);
+  background: transparent;
+}
+.rad-field__box--underline:hover {
+  border-color: var(--rd-sys-color-border-subtle);
+}
+.rad-field:focus-within .rad-field__box--underline {
+  border-color: var(--rd-sys-color-border-brand);
+}

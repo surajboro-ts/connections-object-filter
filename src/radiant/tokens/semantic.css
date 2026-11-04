@@ -1,0 +1,288 @@
+/**
+ * Radiant — Semantic Color Tokens (the alias layer)
+ * Reference THESE in product code — never a primitive directly.
+ * Every value maps onto a primitive from primitives.css by NAME.
+ *
+ * NOTE on source fidelity: in the Figma some later cards (Toggle, Button)
+ * print copy-pasted hex labels that don't match their named primitive
+ * (e.g. "Gray 40 #FFEBEC"). The primitive NAME is authoritative there, and
+ * that is what these mappings follow.
+ *
+ * Light theme lives on :root. Dark theme overrides live on [data-theme="dark"].
+ */
+
+:root {
+  /* ============================ Background ============================ */
+  /* --rd-sys-color-bg-* — surfaces & backgrounds of pages, containers, menus, cards, actions */
+  --rd-sys-color-bg-sunken: var(--rad-gray-10);
+  --rd-sys-color-bg-base: var(--rad-gray-0);
+  --rd-sys-color-bg-on-base: var(--rad-gray-10);
+  --rd-sys-color-bg-raised: var(--rad-gray-0);
+  --rd-sys-color-bg-active: var(--rad-gray-0);
+  --rd-sys-color-bg-secondary-action: var(--rad-gray-20);
+  --rd-sys-color-bg-brand: var(--rad-blue-60);
+  --rd-sys-color-bg-inverse: var(--rad-gray-80);
+  --rd-sys-color-bg-success: var(--rad-green-20);
+  --rd-sys-color-bg-warning: var(--rad-yellow-20);
+  --rd-sys-color-bg-failure: var(--rad-red-20);
+  --rd-sys-color-bg-information: var(--rad-blue-20);
+  --rd-sys-color-bg-overlay: var(--rad-gray-70a);
+  --rd-sys-color-bg-ghost-hover: var(--rad-gray-10a);
+  --rd-sys-color-bg-ghost-highlight: rgba(113, 161, 244, 0.12); /* Blue 50 @ 12% — per live Figma (#71a1f41f); the semantic PDF showed Blue 10 @ 12% */
+  --rd-sys-color-bg-accent-green: var(--rad-green-20);
+  --rd-sys-color-bg-accent-yellow: var(--rad-yellow-20);
+  --rd-sys-color-bg-accent-red: var(--rad-red-20);
+  --rd-sys-color-bg-accent-blue: var(--rad-blue-20);
+  --rd-sys-color-bg-accent-gray: var(--rad-gray-10);
+  --rd-sys-color-bg-accent-purple-subtle: var(--rad-purple-20);
+  --rd-sys-color-bg-accent-purple-bold: var(--rad-purple-60);
+
+  /* ============================= Content ============================= */
+  /* --rd-sys-color-content-* — foreground: text, icons, links */
+  --rd-sys-color-content-primary: var(--rad-gray-90);
+  --rd-sys-color-content-secondary: var(--rad-gray-60);
+  --rd-sys-color-content-tertiary: var(--rad-gray-40);
+  --rd-sys-color-content-inverse: var(--rad-gray-0);
+  --rd-sys-color-content-brand: var(--rad-blue-60);
+  --rd-sys-color-content-success: var(--rad-green-60);
+  --rd-sys-color-content-warning: var(--rad-yellow-60);
+  --rd-sys-color-content-failure: var(--rad-red-60);
+  --rd-sys-color-content-information: var(--rad-blue-60);
+  --rd-sys-color-content-accent-green: var(--rad-green-60);
+  --rd-sys-color-content-accent-yellow: var(--rad-yellow-60);
+  --rd-sys-color-content-accent-red: var(--rad-red-60);
+  --rd-sys-color-content-accent-blue: var(--rad-blue-60);
+  --rd-sys-color-content-accent-gray: var(--rad-gray-60);
+  --rd-sys-color-content-accent-purple: var(--rad-purple-60);
+
+  /* ============================== Border ============================= */
+  /* --rd-sys-color-border-* — stroke of cards, actions, separators */
+  --rd-sys-color-border-subtle: var(--rad-gray-20);
+  --rd-sys-color-border-subtle-hover: var(--rad-gray-30);
+  --rd-sys-color-border-bold: var(--rad-gray-40);
+  --rd-sys-color-border-bold-hover: var(--rad-gray-50);
+  --rd-sys-color-border-brand: var(--rad-blue-60);
+  --rd-sys-color-border-warning: var(--rad-yellow-60);
+  --rd-sys-color-border-failure: var(--rad-red-60);
+  --rd-sys-color-border-focus: var(--rad-blue-50);
+  --rd-sys-color-border-gap: var(--rad-gray-0);
+  --rd-sys-color-border-accent-green: var(--rad-green-60);
+  --rd-sys-color-border-accent-yellow: var(--rad-yellow-60);
+  --rd-sys-color-border-accent-red: var(--rad-red-60);
+  --rd-sys-color-border-accent-blue: var(--rad-blue-60);
+  --rd-sys-color-border-accent-gray: var(--rad-gray-60);
+  --rd-sys-color-border-accent-purple: var(--rad-purple-60);
+
+  /* ============================== Shadow ============================= */
+  /* --rd-sys-color-shadow-* — per-layer shadow colors (base #192331 @ opacity).
+     Opacities match the authoritative Elevations spec; the ready-to-use
+     composite box-shadows live in elevation.css (--rd-sys-elevation-*). */
+  --rd-sys-color-shadow-surface-1: rgba(25, 35, 49, 0.1);
+  --rd-sys-color-shadow-surface-2: rgba(25, 35, 49, 0.04);
+  --rd-sys-color-shadow-menu-1: rgba(25, 35, 49, 0.08);
+  --rd-sys-color-shadow-menu-2: rgba(25, 35, 49, 0.12);
+  --rd-sys-color-shadow-modal-1: rgba(25, 35, 49, 0.1);
+  --rd-sys-color-shadow-modal-2: rgba(25, 35, 49, 0.16);
+
+  /* =============================== Chip ============================== */
+  /* --rd-sys-color-chip-* — search token chips: attribute, measure, filter, date, free-text, error */
+  --rd-sys-color-chip-loading: var(--rad-gray-10);
+
+  --rd-sys-color-chip-attribute-default: var(--rad-blue-20);
+  --rd-sys-color-chip-attribute-hover: var(--rad-blue-30);
+  --rd-sys-color-chip-attribute-pressed: var(--rad-blue-40);
+  --rd-sys-color-chip-attribute-icon: var(--rad-blue-60);
+  --rd-sys-color-chip-attribute-active-border: var(--rad-blue-30);
+
+  --rd-sys-color-chip-measure-default: var(--rad-green-20);
+  --rd-sys-color-chip-measure-hover: var(--rad-green-30);
+  --rd-sys-color-chip-measure-pressed: var(--rad-green-40);
+  --rd-sys-color-chip-measure-icon: var(--rad-green-60);
+  --rd-sys-color-chip-measure-active-border: var(--rad-green-30);
+
+  --rd-sys-color-chip-filter-default: var(--rad-gray-20);
+  --rd-sys-color-chip-filter-hover: var(--rad-gray-30);
+  --rd-sys-color-chip-filter-pressed: var(--rad-gray-40);
+  --rd-sys-color-chip-filter-icon: var(--rad-gray-60);
+  --rd-sys-color-chip-filter-active-border: var(--rad-gray-30);
+
+  --rd-sys-color-chip-date-default: var(--rad-purple-20);
+  --rd-sys-color-chip-date-hover: var(--rad-purple-30);
+  --rd-sys-color-chip-date-pressed: var(--rad-purple-40);
+  --rd-sys-color-chip-date-icon: var(--rad-purple-60);
+  --rd-sys-color-chip-date-active-border: var(--rad-purple-30);
+
+  --rd-sys-color-chip-input-default: var(--rad-gray-0);
+  --rd-sys-color-chip-input-hover: var(--rad-gray-10);
+  --rd-sys-color-chip-input-pressed: var(--rad-gray-20);
+  --rd-sys-color-chip-input-selected-default: var(--rad-gray-70);
+  --rd-sys-color-chip-input-selected-hover: var(--rad-gray-80);
+  --rd-sys-color-chip-input-selected-pressed: var(--rad-gray-90);
+
+  --rd-sys-color-chip-error-default: var(--rad-red-20);
+  --rd-sys-color-chip-error-hover: var(--rad-red-30);
+  /* Doc shows Gray 30 for the light error active-border (dark = Red 70);
+     flagged — likely intended Red 30 to match the family pattern. */
+  --rd-sys-color-chip-error-active-border: var(--rad-gray-30);
+
+  /* ============================== Toggle ============================= */
+  /* --rd-sys-color-toggle-* — switch track & thumb */
+  --rd-sys-color-toggle-track-off: var(--rad-gray-40);
+  --rd-sys-color-toggle-track-on: var(--rad-blue-30);
+  --rd-sys-color-toggle-thumb-off: var(--rad-gray-0);
+  --rd-sys-color-toggle-thumb-on: var(--rad-blue-60);
+  --rd-sys-color-toggle-thumb-outline-off: var(--rad-gray-30);
+
+  /* ============================== Button ============================= */
+  /* --rd-sys-color-button-* — primary/secondary/tertiary fills + scrim */
+  --rd-sys-color-button-background-overlay: var(--rad-gray-60a);
+  --rd-sys-color-button-background-primary-default: var(--rad-blue-60);
+  --rd-sys-color-button-background-primary-hover: var(--rad-blue-70);
+  --rd-sys-color-button-background-primary-pressed: var(--rad-blue-80);
+  --rd-sys-color-button-background-primary-on-color-default: var(--rad-gray-0);
+  --rd-sys-color-button-background-primary-on-color-hover: var(--rad-blue-20);
+  --rd-sys-color-button-background-primary-on-color-pressed: var(--rad-blue-30);
+  --rd-sys-color-button-background-secondary-default: var(--rad-gray-20);
+  --rd-sys-color-button-background-secondary-hover: var(--rad-gray-30);
+  --rd-sys-color-button-background-secondary-pressed: var(--rad-gray-40);
+  /* tertiary-default is transparent at rest (no token) */
+  --rd-sys-color-button-background-tertiary-hover: rgba(246, 248, 250, 0.12); /* Gray 10 @ 12% */
+  --rd-sys-color-button-background-tertiary-pressed: rgba(113, 161, 244, 0.12); /* Brand 50 @ 12% */
+
+  /* ========================= Segmented Control ====================== */
+  --rd-sys-color-segmented-control-content-active: var(--rad-blue-60);
+}
+
+/* ================================================================== */
+/* Dark theme                                                          */
+/* Maps each token to its dark primitive by name (per the semantic doc).*/
+/* ================================================================== */
+[data-theme='dark'] {
+  /* Background */
+  --rd-sys-color-bg-sunken: var(--rad-darkgray-0);
+  --rd-sys-color-bg-base: var(--rad-darkgray-5);
+  --rd-sys-color-bg-on-base: var(--rad-darkgray-10);
+  --rd-sys-color-bg-raised: var(--rad-darkgray-15);
+  --rd-sys-color-bg-active: var(--rad-darkgray-40);
+  --rd-sys-color-bg-secondary-action: var(--rad-darkgray-20);
+  --rd-sys-color-bg-brand: var(--rad-blue-50);
+  --rd-sys-color-bg-inverse: var(--rad-darkgray-90);
+  --rd-sys-color-bg-success: var(--rad-green-90);
+  --rd-sys-color-bg-warning: var(--rad-yellow-90);
+  --rd-sys-color-bg-failure: var(--rad-red-90);
+  --rd-sys-color-bg-information: var(--rad-blue-90);
+  --rd-sys-color-bg-overlay: var(--rad-darkgray-30a);
+  --rd-sys-color-bg-ghost-hover: var(--rad-gray-10a);
+  --rd-sys-color-bg-ghost-highlight: var(--rad-blue-10a);
+  --rd-sys-color-bg-accent-green: var(--rad-green-90);
+  --rd-sys-color-bg-accent-yellow: var(--rad-yellow-90);
+  --rd-sys-color-bg-accent-red: var(--rad-red-90);
+  --rd-sys-color-bg-accent-blue: var(--rad-blue-90);
+  --rd-sys-color-bg-accent-gray: var(--rad-darkgray-15);
+  --rd-sys-color-bg-accent-purple-subtle: var(--rad-purple-90);
+  --rd-sys-color-bg-accent-purple-bold: var(--rad-purple-50);
+
+  /* Content */
+  --rd-sys-color-content-primary: var(--rad-darkgray-90);
+  --rd-sys-color-content-secondary: var(--rad-darkgray-60);
+  --rd-sys-color-content-tertiary: var(--rad-darkgray-40);
+  --rd-sys-color-content-inverse: var(--rad-darkgray-5);
+  --rd-sys-color-content-brand: var(--rad-blue-50);
+  --rd-sys-color-content-success: var(--rad-green-50);
+  --rd-sys-color-content-warning: var(--rad-yellow-50);
+  --rd-sys-color-content-failure: var(--rad-red-50);
+  --rd-sys-color-content-information: var(--rad-blue-50);
+  --rd-sys-color-content-accent-green: var(--rad-green-50);
+  --rd-sys-color-content-accent-yellow: var(--rad-yellow-50);
+  --rd-sys-color-content-accent-red: var(--rad-red-50);
+  --rd-sys-color-content-accent-blue: var(--rad-blue-50);
+  --rd-sys-color-content-accent-gray: var(--rad-darkgray-40);
+  --rd-sys-color-content-accent-purple: var(--rad-purple-50);
+
+  /* Border */
+  --rd-sys-color-border-subtle: var(--rad-darkgray-20);
+  --rd-sys-color-border-subtle-hover: var(--rad-darkgray-30);
+  --rd-sys-color-border-bold: var(--rad-darkgray-40);
+  --rd-sys-color-border-bold-hover: var(--rad-darkgray-50);
+  --rd-sys-color-border-brand: var(--rad-blue-50);
+  --rd-sys-color-border-warning: var(--rad-yellow-50);
+  --rd-sys-color-border-failure: var(--rad-red-50);
+  --rd-sys-color-border-focus: var(--rad-blue-60);
+  --rd-sys-color-border-gap: var(--rad-darkgray-0);
+  --rd-sys-color-border-accent-green: var(--rad-green-50);
+  --rd-sys-color-border-accent-yellow: var(--rad-yellow-50);
+  --rd-sys-color-border-accent-red: var(--rad-red-50);
+  --rd-sys-color-border-accent-blue: var(--rad-blue-50);
+  --rd-sys-color-border-accent-gray: var(--rad-darkgray-40);
+  --rd-sys-color-border-accent-purple: var(--rad-purple-50);
+
+  /* Shadow */
+  --rd-sys-color-shadow-surface-1: rgba(0, 0, 0, 0.4);
+  --rd-sys-color-shadow-surface-2: rgba(0, 0, 0, 0.16);
+  --rd-sys-color-shadow-menu-1: rgba(0, 0, 0, 0.32);
+  --rd-sys-color-shadow-menu-2: rgba(0, 0, 0, 0.48);
+  --rd-sys-color-shadow-modal-1: rgba(0, 0, 0, 0.4);
+  --rd-sys-color-shadow-modal-2: rgba(0, 0, 0, 0.64);
+
+  /* Chip */
+  --rd-sys-color-chip-loading: var(--rad-darkgray-10);
+
+  --rd-sys-color-chip-attribute-default: var(--rad-blue-90);
+  --rd-sys-color-chip-attribute-hover: var(--rad-blue-80);
+  --rd-sys-color-chip-attribute-pressed: var(--rad-blue-70);
+  --rd-sys-color-chip-attribute-icon: var(--rad-blue-50);
+  --rd-sys-color-chip-attribute-active-border: var(--rad-blue-80);
+
+  --rd-sys-color-chip-measure-default: var(--rad-green-90);
+  --rd-sys-color-chip-measure-hover: var(--rad-green-80);
+  --rd-sys-color-chip-measure-pressed: var(--rad-green-70);
+  --rd-sys-color-chip-measure-icon: var(--rad-green-50);
+  --rd-sys-color-chip-measure-active-border: var(--rad-green-80);
+
+  --rd-sys-color-chip-filter-default: var(--rad-darkgray-20);
+  --rd-sys-color-chip-filter-hover: var(--rad-darkgray-30);
+  --rd-sys-color-chip-filter-pressed: var(--rad-darkgray-40);
+  --rd-sys-color-chip-filter-icon: var(--rad-darkgray-60);
+  --rd-sys-color-chip-filter-active-border: var(--rad-darkgray-30);
+
+  --rd-sys-color-chip-date-default: var(--rad-purple-90);
+  --rd-sys-color-chip-date-hover: var(--rad-purple-80);
+  --rd-sys-color-chip-date-pressed: var(--rad-purple-70);
+  --rd-sys-color-chip-date-icon: var(--rad-purple-50);
+  --rd-sys-color-chip-date-active-border: var(--rad-purple-80);
+
+  --rd-sys-color-chip-input-default: var(--rad-darkgray-5);
+  --rd-sys-color-chip-input-hover: var(--rad-darkgray-15);
+  --rd-sys-color-chip-input-pressed: var(--rad-darkgray-20);
+  --rd-sys-color-chip-input-selected-default: var(--rad-darkgray-70);
+  --rd-sys-color-chip-input-selected-hover: var(--rad-darkgray-80);
+  --rd-sys-color-chip-input-selected-pressed: var(--rad-darkgray-90);
+
+  --rd-sys-color-chip-error-default: var(--rad-red-90);
+  --rd-sys-color-chip-error-hover: var(--rad-red-80);
+  --rd-sys-color-chip-error-active-border: var(--rad-red-70);
+
+  /* Toggle */
+  --rd-sys-color-toggle-track-off: var(--rad-darkgray-40);
+  --rd-sys-color-toggle-track-on: var(--rad-blue-80);
+  --rd-sys-color-toggle-thumb-off: var(--rad-darkgray-80);
+  --rd-sys-color-toggle-thumb-on: var(--rad-blue-30);
+  --rd-sys-color-toggle-thumb-outline-off: var(--rad-darkgray-80);
+
+  /* Button */
+  --rd-sys-color-button-background-overlay: rgba(93, 99, 106, 0.6); /* Dark Gray 40 @ 60% */
+  --rd-sys-color-button-background-primary-default: var(--rad-blue-50);
+  --rd-sys-color-button-background-primary-hover: var(--rad-blue-40);
+  --rd-sys-color-button-background-primary-pressed: var(--rad-blue-30);
+  --rd-sys-color-button-background-primary-on-color-default: var(--rad-darkgray-5);
+  --rd-sys-color-button-background-primary-on-color-hover: var(--rad-darkgray-15);
+  --rd-sys-color-button-background-primary-on-color-pressed: var(--rad-darkgray-30);
+  --rd-sys-color-button-background-secondary-default: var(--rad-darkgray-20);
+  --rd-sys-color-button-background-secondary-hover: var(--rad-darkgray-30);
+  --rd-sys-color-button-background-secondary-pressed: var(--rad-darkgray-40);
+  --rd-sys-color-button-background-tertiary-hover: rgba(38, 40, 44, 0.12); /* Dark Gray 10 @ 12% */
+  --rd-sys-color-button-background-tertiary-pressed: rgba(113, 161, 244, 0.12); /* Brand 50 @ 12% */
+
+  /* Segmented Control */
+  --rd-sys-color-segmented-control-content-active: var(--rad-darkgray-90);
+}

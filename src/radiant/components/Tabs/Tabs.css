@@ -1,0 +1,26 @@
+/** Radiant — Tabs. Container 1px subtle bottom border; active tab 2px brand. */
+.rad-tabs {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--rd-sys-color-border-subtle);
+  font-family: var(--rd-sys-font-family);
+}
+.rad-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 var(--rd-sys-spacing-c); /* 0 12px */
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--rd-sys-color-content-primary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px; /* overlap the container border */
+  transition: color 100ms ease, border-color 100ms ease;
+}
+.rad-tab:hover { color: var(--rd-sys-color-content-brand); }
+.rad-tab.is-active {
+  color: var(--rd-sys-color-content-brand);
+  border-bottom-color: var(--rd-sys-color-content-brand);
+}

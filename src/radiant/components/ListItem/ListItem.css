@@ -1,0 +1,20 @@
+/** Radiant — single-line List item (Figma "_Utils/ Single line List item" 501:79830).
+    Row, 6px 16px padding, 12px gap, ~32px tall. leading · label [· secondary] … [trailing]. */
+.rad-listitem {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c); /* 12px */
+  box-sizing: border-box;
+  min-height: 32px;
+  padding: 6px var(--rd-sys-spacing-d); /* 6px 16px */
+  cursor: pointer;
+}
+.rad-listitem__text { color: var(--rd-sys-color-content-primary); }
+/* Secondary (e.g. data type) — same Body/Normal size, content-secondary. */
+.rad-listitem__secondary { color: var(--rd-sys-color-content-secondary); }
+.rad-listitem__trailing { display: inline-flex; align-items: center; }
+
+.rad-listitem:not(.is-disabled):hover { background: var(--rd-sys-color-bg-ghost-hover); }
+.rad-listitem.is-disabled { cursor: not-allowed; }
+.rad-listitem.is-disabled .rad-listitem__text,
+.rad-listitem.is-disabled .rad-listitem__secondary { color: var(--rd-sys-color-content-tertiary); }

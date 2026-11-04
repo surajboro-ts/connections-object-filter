@@ -1,0 +1,78 @@
+/**
+ * Radiant — Trigger chip. From the Figma "Chip / Trigger" set.
+ *   Pill (radius 16), 28px tall, padding 4px 12px, gap 8px, trailing chevron.
+ *   Attribute = blue, Measure = green, Filter = gray, Cross filter = white+blue border.
+ *   States: default → hover → pressed (darker fills); disabled = 40%.
+ *   Optional circular delete badge overlaps the top-right (appears on hover).
+ */
+.rad-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-b); /* 8px */
+  box-sizing: border-box;
+  height: 28px;
+  padding: 4px var(--rd-sys-spacing-c); /* 4px 12px */
+  border: none;
+  border-radius: var(--rd-sys-radius-16);
+  font-family: var(--rd-sys-font-family);
+  font-size: var(--rd-sys-type-body-size);
+  line-height: var(--rd-sys-type-body-line);
+  color: var(--rd-sys-color-content-primary);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 100ms ease;
+}
+.rad-trigger__label b { font-weight: var(--rd-sys-font-weight-medium); }
+.rad-trigger__chev { display: inline-flex; color: var(--rd-sys-color-content-primary); flex: none; }
+
+/* ---- kinds ---- */
+.rad-trigger--attribute { background: var(--rd-sys-color-chip-attribute-default); }
+.rad-trigger--attribute:hover { background: var(--rd-sys-color-chip-attribute-hover); }
+.rad-trigger--attribute.is-active { background: var(--rd-sys-color-chip-attribute-pressed); }
+.rad-trigger--measure { background: var(--rd-sys-color-chip-measure-default); }
+.rad-trigger--measure:hover { background: var(--rd-sys-color-chip-measure-hover); }
+.rad-trigger--measure.is-active { background: var(--rd-sys-color-chip-measure-pressed); }
+.rad-trigger--filter { background: var(--rd-sys-color-chip-filter-default); }
+.rad-trigger--filter:hover { background: var(--rd-sys-color-chip-filter-hover); }
+.rad-trigger--filter.is-active { background: var(--rd-sys-color-chip-filter-pressed); }
+/* Cross filter — white with a brand border */
+.rad-trigger--crossfilter {
+  background: var(--rd-sys-color-bg-base);
+  box-shadow: inset 0 0 0 1px var(--rd-sys-color-border-brand);
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-trigger--crossfilter:hover { background: var(--rd-sys-color-bg-ghost-highlight); }
+
+.rad-trigger:disabled,
+.rad-trigger.is-disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ---- delete badge ---- */
+.rad-trigger__delete {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--rd-sys-color-content-secondary);
+  color: var(--rd-sys-color-content-inverse);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 100ms ease;
+}
+.rad-trigger:hover .rad-trigger__delete,
+.rad-trigger__delete:focus-visible { opacity: 1; }
+
+/* ---- skeleton / loading ---- */
+.rad-trigger--skeleton {
+  background: transparent;
+  border: 1px dashed var(--rd-sys-color-border-bold);
+  color: var(--rd-sys-color-content-secondary);
+  cursor: default;
+  padding: 5px var(--rd-sys-spacing-d);
+}

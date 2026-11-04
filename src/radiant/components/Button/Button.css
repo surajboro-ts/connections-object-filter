@@ -1,0 +1,152 @@
+/**
+ * Radiant — Button styles. Values taken verbatim from the Figma "Button"
+ * component set (node 16814:14250). Colors reference semantic tokens.
+ *
+ * Geometry:
+ *   Basic — padding 6px 16px, radius 16px (pill on the 32px height)
+ *   Small — padding 3px 12px, radius 12px
+ *   Tertiary — minimal x-padding (…4px), radius 6px (text-button feel)
+ */
+
+.rad-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rd-sys-spacing-a); /* 4px icon↔label; Figma tightens tertiary, see below */
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--rd-sys-font-family);
+  /* Label style = Body/Normal (14/20, 400) at Basic; Small steps down to caption */
+  font-weight: var(--rd-sys-font-weight-regular);
+  text-decoration: none;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.rad-btn__label {
+  display: inline-block;
+}
+.rad-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------------- Sizes ---------------- */
+.rad-btn--basic,
+.rad-btn--large {
+  padding: 6px var(--rd-sys-spacing-d); /* 6px 16px */
+  min-height: 32px;
+  font-size: var(--rd-sys-type-body-size); /* 14px */
+  line-height: var(--rd-sys-type-body-line); /* 20px */
+  letter-spacing: var(--rd-sys-type-body-tracking);
+  border-radius: var(--rd-sys-radius-16); /* pill */
+  gap: var(--rd-sys-spacing-b); /* 8px */
+}
+.rad-btn--small {
+  padding: 3px var(--rd-sys-spacing-c); /* 3px 12px */
+  min-height: 24px;
+  font-size: var(--rd-sys-type-caption-size); /* 12px */
+  line-height: var(--rd-sys-type-caption-line); /* 18px */
+  letter-spacing: var(--rd-sys-type-caption-tracking);
+  border-radius: var(--rd-sys-radius-12);
+  gap: var(--rd-sys-spacing-a); /* 4px */
+}
+
+/* Icon box scales with size */
+.rad-btn--basic .rad-btn__icon,
+.rad-btn--large .rad-btn__icon { font-size: 16px; }
+.rad-btn--small .rad-btn__icon { font-size: 14px; }
+
+/* ---------------- Primary ---------------- */
+.rad-btn--primary {
+  background: var(--rd-sys-color-button-background-primary-default);
+  color: var(--rd-sys-color-content-inverse);
+}
+.rad-btn--primary:hover,
+.rad-btn--primary[data-force-state='hover'] {
+  background: var(--rd-sys-color-button-background-primary-hover);
+}
+.rad-btn--primary:active,
+.rad-btn--primary[data-force-state='activated'] {
+  background: var(--rd-sys-color-button-background-primary-pressed);
+}
+
+/* ---------------- Secondary ---------------- */
+.rad-btn--secondary {
+  background: var(--rd-sys-color-button-background-secondary-default);
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-btn--secondary:hover,
+.rad-btn--secondary[data-force-state='hover'] {
+  background: var(--rd-sys-color-button-background-secondary-hover);
+}
+.rad-btn--secondary:active,
+.rad-btn--secondary[data-force-state='activated'] {
+  background: var(--rd-sys-color-button-background-secondary-pressed);
+}
+
+/* ---------------- Tertiary ---------------- */
+.rad-btn--tertiary {
+  background: transparent;
+  color: var(--rd-sys-color-content-brand);
+  border-radius: var(--rd-sys-radius-6);
+}
+.rad-btn--tertiary.rad-btn--basic,
+.rad-btn--tertiary.rad-btn--large {
+  padding: 6px var(--rd-sys-spacing-a); /* 6px 4px */
+}
+.rad-btn--tertiary.rad-btn--small {
+  padding: 3px var(--rd-sys-spacing-a); /* 3px 4px */
+}
+.rad-btn--tertiary:hover,
+.rad-btn--tertiary[data-force-state='hover'] {
+  background: var(--rd-sys-color-bg-ghost-hover);
+}
+.rad-btn--tertiary:active,
+.rad-btn--tertiary[data-force-state='activated'] {
+  background: var(--rd-sys-color-bg-ghost-highlight);
+}
+
+/* ---------------- Disabled ----------------
+   Figma keeps Secondary's resting fill and mutes the label; Primary/Tertiary
+   fall back to a muted, non-interactive look. (Disabled label = content-tertiary;
+   confirm exact disabled tokens from the Button node if they diverge.) */
+.rad-btn:disabled,
+.rad-btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  color: var(--rd-sys-color-content-tertiary);
+}
+.rad-btn--primary:disabled {
+  background: var(--rd-sys-color-button-background-secondary-default);
+}
+.rad-btn--tertiary:disabled {
+  background: transparent;
+}
+
+/* ---------------- White colorway (on colored / brand surfaces) ----------------
+   Figma defines this for Primary + Tertiary. Primary = white fill with brand
+   label (on-color tokens); Tertiary = ghost washes with a white label. */
+.rad-btn--on-color.rad-btn--primary {
+  background: var(--rd-sys-color-button-background-primary-on-color-default);
+  color: var(--rd-sys-color-content-brand);
+}
+.rad-btn--on-color.rad-btn--primary:hover,
+.rad-btn--on-color.rad-btn--primary[data-force-state='hover'] {
+  background: var(--rd-sys-color-button-background-primary-on-color-hover);
+}
+.rad-btn--on-color.rad-btn--primary:active,
+.rad-btn--on-color.rad-btn--primary[data-force-state='activated'] {
+  background: var(--rd-sys-color-button-background-primary-on-color-pressed);
+}
+.rad-btn--on-color.rad-btn--tertiary {
+  color: var(--rd-sys-color-content-inverse);
+}
+
+/* Focus ring — Radiant focus border token */
+.rad-btn:focus-visible {
+  outline: 2px solid var(--rd-sys-color-border-focus);
+  outline-offset: 1px;
+}

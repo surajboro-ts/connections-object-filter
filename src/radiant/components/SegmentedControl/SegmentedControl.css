@@ -1,0 +1,44 @@
+/**
+ * Radiant — Segmented control. Container bg secondary-action (gray-20), pill,
+ * 2px padding. Active segment = white (bg-active) + Surface shadow + brand content.
+ */
+.rad-segmented {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 2px;
+  background: var(--rd-sys-color-bg-secondary-action);
+  border-radius: 32px; /* Figma container radius */
+}
+.rad-segmented__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rd-sys-spacing-b);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px var(--rd-sys-spacing-d); /* Figma: 4px 16px */
+  border-radius: 14px; /* Figma item radius */
+  font-family: var(--rd-sys-font-family);
+  font-size: var(--rd-sys-type-body-size);
+  line-height: var(--rd-sys-type-body-line);
+  color: var(--rd-sys-color-content-primary);
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.rad-segmented__item--icon { padding: 4px 10px; }
+.rad-segmented__icon { display: inline-flex; align-items: center; font-size: 16px; }
+
+.rad-segmented__item:hover:not(.is-active) {
+  background: var(--rd-sys-color-bg-ghost-hover);
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-segmented__item.is-active {
+  background: var(--rd-sys-color-bg-active);
+  color: var(--rd-sys-color-segmented-control-content-active);
+  box-shadow: var(--rd-sys-elevation-100); /* Figma: Elevation/100 */
+}
+.rad-segmented__item:focus-visible {
+  outline: 2px solid var(--rd-sys-color-border-focus);
+  outline-offset: 1px;
+}

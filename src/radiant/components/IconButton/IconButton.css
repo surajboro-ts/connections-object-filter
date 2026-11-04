@@ -1,0 +1,106 @@
+/**
+ * Radiant — Icon button. Circular icon-only button.
+ * Verified against the Figma "Icon buttton" render:
+ *   Primary   — filled blue circle, white icon (blue60→70→80)
+ *   Secondary — filled gray circle, dark icon (gray20→30→40)
+ *   Ghost     — transparent → ghost-hover → ghost-highlight (icon turns brand on activate)
+ * Sizes: Standard 32 · Small 24 · XS 20. Disabled = 40% opacity.
+ */
+
+.rad-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.rad-iconbtn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+/* Notification badge — red dot hugging the top-right (Figma Ellipse 260, 12px,
+   x=20 y=-2 on the 32px button). A 2px ring in the surface colour punches it out. */
+.rad-iconbtn--dot { position: relative; overflow: visible; }
+.rad-iconbtn__dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--rd-sys-color-content-failure);
+  box-shadow: 0 0 0 2px var(--rd-sys-color-bg-base);
+}
+
+/* Sizes (square → circle) */
+.rad-iconbtn--standard { width: 32px; height: 32px; }
+.rad-iconbtn--small { width: 24px; height: 24px; }
+.rad-iconbtn--xs { width: 20px; height: 20px; }
+.rad-iconbtn--standard .rad-iconbtn__icon { font-size: 20px; }
+.rad-iconbtn--small .rad-iconbtn__icon { font-size: 16px; }
+.rad-iconbtn--xs .rad-iconbtn__icon { font-size: 14px; }
+
+/* Primary — filled blue, white icon */
+.rad-iconbtn--primary {
+  background: var(--rd-sys-color-button-background-primary-default);
+  color: var(--rd-sys-color-content-inverse);
+}
+.rad-iconbtn--primary:hover,
+.rad-iconbtn--primary[data-force-state='hover'] {
+  background: var(--rd-sys-color-button-background-primary-hover);
+}
+.rad-iconbtn--primary:active,
+.rad-iconbtn--primary[data-force-state='activated'] {
+  background: var(--rd-sys-color-button-background-primary-pressed);
+}
+
+/* Secondary — filled gray, dark icon */
+.rad-iconbtn--secondary {
+  background: var(--rd-sys-color-button-background-secondary-default);
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-iconbtn--secondary:hover,
+.rad-iconbtn--secondary[data-force-state='hover'] {
+  background: var(--rd-sys-color-button-background-secondary-hover);
+}
+.rad-iconbtn--secondary:active,
+.rad-iconbtn--secondary[data-force-state='activated'] {
+  background: var(--rd-sys-color-button-background-secondary-pressed);
+}
+
+/* Ghost — transparent, icon = muted secondary; washes on hover/active; icon → brand on activate */
+.rad-iconbtn--ghost {
+  background: transparent;
+  color: var(--rd-sys-color-content-secondary);
+}
+.rad-iconbtn--ghost:hover,
+.rad-iconbtn--ghost[data-force-state='hover'] {
+  background: var(--rd-sys-color-bg-ghost-hover);
+}
+.rad-iconbtn--ghost:active,
+.rad-iconbtn--ghost[data-force-state='activated'] {
+  background: var(--rd-sys-color-bg-ghost-highlight);
+  color: var(--rd-sys-color-content-brand);
+}
+/* Ghost on colored surfaces — white icon */
+.rad-iconbtn--ghost.rad-iconbtn--on-color {
+  color: var(--rd-sys-color-content-inverse);
+}
+
+/* Disabled — whole control at 40% */
+.rad-iconbtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.rad-iconbtn:focus-visible {
+  outline: 2px solid var(--rd-sys-color-border-focus);
+  outline-offset: 1px;
+}

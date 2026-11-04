@@ -1,0 +1,29 @@
+/** Radiant — Org switcher, LEFT half of the account capsule (Figma 18244:18931).
+    Outer (left) corners fully round (20px), inner (right) corners near-square (2px)
+    so it butts up against the UserProfile with a small gap. */
+.rad-orgswitcher {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-a); /* 4px text → chevron */
+  height: 32px;
+  padding: 6px 6px 6px 18px; /* Figma: 6 top/right/bottom, 18 left */
+  box-sizing: border-box;
+  border: none;
+  border-radius: 20px 2px 2px 20px;
+  background: var(--rd-sys-color-button-background-secondary-default);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+.rad-orgswitcher:hover { background: var(--rd-sys-color-button-background-secondary-hover); }
+.rad-orgswitcher:active { background: var(--rd-sys-color-button-background-secondary-pressed); }
+
+.rad-orgswitcher__label {
+  font-family: var(--rd-sys-font-family);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600; /* Label / Content Label Subhead */
+  letter-spacing: 0;
+  color: var(--rd-sys-color-content-primary);
+  white-space: nowrap;
+}
+.rad-orgswitcher__chev { color: var(--rd-sys-color-content-primary); flex: none; }

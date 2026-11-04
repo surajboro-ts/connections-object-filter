@@ -1,0 +1,27 @@
+/** Radiant — TopNav. App-shell header; lays out the bar, content comes via slots. */
+.rad-topnav {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c); /* 12px between each control */
+  height: 56px;
+  padding: 0 var(--rd-sys-spacing-d);
+  box-sizing: border-box;
+  /* Match the SideNav surface (bg-on-base), not the page base. */
+  background: var(--rd-sys-color-bg-on-base);
+  border-bottom: 1px solid var(--rd-sys-color-border-subtle);
+}
+/* Logo zone: the negative margin cancels the header's 16px left padding so the
+   zone starts at x=0, centring the logo over the first SideNav app tab. */
+.rad-topnav__logozone {
+  flex: none;
+  margin-left: calc(-1 * var(--rd-sys-spacing-d));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rad-topnav__logozone > svg { display: block; }
+.rad-topnav__spacer { flex: 1 1 auto; }
+/* Account cluster (e.g. org switcher + user profile) sits 2px apart as one
+   segmented capsule; the 12px bar gap applies between it and the rest. */
+.rad-topnav__account { display: inline-flex; align-items: center; gap: 2px; }

@@ -1,0 +1,21 @@
+/**
+ * Radiant — Spacing
+ * A 4-point scale. Every margin, padding and gap in the product is one of
+ * these twelve steps. Values are literal pixels (the ramp is not scaled).
+ * Figma names: Spacing/A … Spacing/L.
+ */
+
+:root {
+  --rd-sys-spacing-a: 4px;
+  --rd-sys-spacing-b: 8px; /* KEY — 8-point grid unit, vertical element margin */
+  --rd-sys-spacing-c: 12px;
+  --rd-sys-spacing-d: 16px; /* KEY — horizontal element margin */
+  --rd-sys-spacing-e: 20px;
+  --rd-sys-spacing-f: 24px; /* KEY — horizontal content cell margin */
+  --rd-sys-spacing-g: 28px;
+  --rd-sys-spacing-h: 32px; /* KEY — vertical content cell margin */
+  --rd-sys-spacing-i: 40px;
+  --rd-sys-spacing-j: 48px;
+  --rd-sys-spacing-k: 56px;
+  --rd-sys-spacing-l: 64px;
+}

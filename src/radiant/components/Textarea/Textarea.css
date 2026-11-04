@@ -1,0 +1,12 @@
+/** Radiant — Text area box: top-aligned, taller. */
+.rad-field__box--area {
+  align-items: flex-start;
+  min-height: 96px;
+  padding-top: var(--rd-sys-spacing-b);
+  padding-bottom: var(--rd-sys-spacing-b);
+}
+.rad-field__box--area textarea {
+  align-self: stretch;
+  min-height: 80px;
+  line-height: var(--rd-sys-type-body-line);
+}

@@ -1,0 +1,62 @@
+/** Radiant — Select dropdown. */
+.rad-select__anchor { position: relative; }
+
+.rad-select__trigger {
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  justify-content: space-between;
+  gap: var(--rd-sys-spacing-b);
+}
+.rad-select__trigger:disabled { cursor: not-allowed; }
+.rad-select__value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--rd-sys-type-body-size);
+  line-height: var(--rd-sys-type-body-line);
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-select__value.is-placeholder { color: var(--rd-sys-color-content-secondary); }
+.rad-select__chev { color: var(--rd-sys-color-content-secondary); }
+
+/* Menu (Elevation/Menu) */
+.rad-select__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  padding: var(--rd-sys-spacing-a);
+  background: var(--rd-sys-color-bg-raised);
+  border-radius: var(--rd-sys-radius-8);
+  box-shadow: var(--rd-sys-elevation-menu);
+  max-height: 280px;
+  overflow-y: auto;
+}
+.rad-select__option {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  padding: var(--rd-sys-spacing-b) var(--rd-sys-spacing-c);
+  border-radius: var(--rd-sys-radius-6);
+  font-family: var(--rd-sys-font-family);
+  font-size: var(--rd-sys-type-body-size);
+  line-height: var(--rd-sys-type-body-line);
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-select__option:hover { background: var(--rd-sys-color-bg-ghost-hover); }
+.rad-select__option.is-selected {
+  background: var(--rd-sys-color-bg-ghost-highlight);
+  color: var(--rd-sys-color-content-brand);
+}
+.rad-select__empty {
+  padding: var(--rd-sys-spacing-b) var(--rd-sys-spacing-c);
+  font-size: var(--rd-sys-type-body-size);
+  color: var(--rd-sys-color-content-secondary);
+}

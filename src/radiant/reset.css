@@ -1,0 +1,42 @@
+/**
+ * Radiant — global scroll behaviour.
+ * Kills the overscroll "rubber-band" / stretch and stops scroll chaining, so
+ * overscrolling an inner list never bounces the surface behind it.
+ * NOTE: use `contain`, NOT `none`, on `*` — `overscroll-behavior: none` on a
+ * NESTED scroll container triggers a Chromium wheel-latch bug where the list
+ * scrolls once and then freezes. `contain` prevents chaining without the freeze.
+ * The page root keeps `none` to fully suppress the top-level rubber-band.
+ */
+* {
+  overscroll-behavior: contain;
+}
+html,
+body {
+  overscroll-behavior: none;
+}
+
+/**
+ * Radiant — Scroll bar. 8px track, fully-rounded (radius 6) gray thumb
+ * (Content/Tertiary), transparent track. Applied to every scroll area.
+ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--rd-sys-color-content-tertiary) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--rd-sys-color-content-tertiary);
+  border-radius: var(--rd-sys-radius-6);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--rd-sys-color-content-secondary);
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}

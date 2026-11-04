@@ -1,0 +1,15 @@
+/** Radiant — Progress bar. Track EAEDF2, fill 2770EF, 8px, radius 8. */
+.rad-progress {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--rd-sys-radius-8);
+  background: var(--rd-sys-color-border-subtle);
+  overflow: hidden;
+}
+.rad-progress__fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--rd-sys-radius-8);
+  background: var(--rd-sys-color-bg-brand);
+  transition: width 200ms ease;
+}

@@ -1,0 +1,85 @@
+/**
+ * Radiant — Stepper. 32px circles, 1px border (Figma "_Stepper/Utils/Number").
+ *   completed — solid green (#06BF7F) + white check
+ *   current   — WHITE fill + blue border + blue number
+ *   upcoming  — WHITE fill + gray border + dark number
+ * Sequential  — numbered circles joined by connector lines (green done / gray pending).
+ * Non-sequential — empty circles, no connectors.
+ * Labels colour by state: completed = secondary, current = brand, upcoming = primary.
+ */
+.rad-stepper { display: flex; font-family: var(--rd-sys-font-family); }
+
+.rad-stepper__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: var(--rd-sys-color-bg-base);
+  font-size: var(--rd-sys-type-body-size);
+  line-height: 1;
+  font-weight: var(--rd-sys-font-weight-regular);
+}
+.rad-stepper__num--completed {
+  background: var(--rd-sys-color-content-success);
+  border-color: transparent;
+  color: var(--rd-sys-color-content-inverse);
+}
+.rad-stepper__num--current {
+  border-color: var(--rd-sys-color-border-brand);
+  color: var(--rd-sys-color-content-brand);
+}
+.rad-stepper__num--upcoming {
+  border-color: var(--rd-sys-color-border-bold);
+  color: var(--rd-sys-color-content-primary);
+}
+
+.rad-stepper__label { color: var(--rd-sys-color-content-primary); }
+.rad-stepper__label--completed { color: var(--rd-sys-color-content-secondary); }
+.rad-stepper__label--current { color: var(--rd-sys-color-content-brand); }
+.rad-stepper__label--upcoming { color: var(--rd-sys-color-content-primary); }
+
+.rad-stepper__line { background: var(--rd-sys-color-border-bold); flex: none; }
+.rad-stepper__line.is-done { background: var(--rd-sys-color-content-success); }
+
+/* ---------------- Horizontal ---------------- */
+.rad-stepper--horizontal { align-items: center; }
+.rad-stepper--horizontal.has-labels { padding-bottom: 28px; } /* room for absolute labels */
+.rad-stepper--horizontal .rad-stepper__step {
+  position: relative;
+  flex: none;
+  display: flex;
+  justify-content: center;
+}
+.rad-stepper--horizontal .rad-stepper__label {
+  position: absolute;
+  top: calc(100% + var(--rd-sys-spacing-b)); /* 8px under the circle */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-align: center;
+}
+.rad-stepper--horizontal .rad-stepper__line {
+  flex: 1 1 0;
+  height: 1px;
+  min-width: 24px;
+}
+
+/* ---------------- Vertical ---------------- */
+.rad-stepper--vertical { flex-direction: column; }
+.rad-stepper--vertical .rad-stepper__step {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c); /* 12px */
+}
+/* Non-sequential vertical: even 24px gap, no connector line. */
+.rad-stepper--vertical.is-nonseq { gap: var(--rd-sys-spacing-f); } /* 24px */
+.rad-stepper--vertical .rad-stepper__line {
+  width: 1px;
+  height: 24px;
+  margin-left: 16px; /* centre under the circle */
+}

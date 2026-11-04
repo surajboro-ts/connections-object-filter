@@ -1,0 +1,218 @@
+/**
+ * Radiant — Object Table. From the "_Cell / Header", "_Cell / Body" and
+ * "_Full Table" Figma sets.
+ *   Header cell — bg sunken (#F6F8FA), right+bottom 1px subtle border, pad 7px 16px,
+ *                 label = Content Label Subhead, sort icon (on sortable / hover).
+ *   Body cell   — 72px row, white, bottom 1px subtle border, pad 12px (16px for
+ *                 checkbox), title = brand link + optional caption footnote.
+ */
+
+.rad-objecttable { width: 100%; }
+
+.rad-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--rd-sys-color-border-subtle);
+  background: var(--rd-sys-color-bg-base);
+}
+/* ---------------- Selection action bar ----------------
+   Replaces the toolbar when ≥1 row is selected. Sunken bar attached to the top of
+   the table (Figma "Object Table Revamp" 455:28349): "N selected" · divider · bulk
+   actions. Its box is a FIXED 48px with no bottom margin, exactly matching the
+   toolbar's 32px + 16px gap footprint, and it keeps the table's own top border as
+   the divider — so swapping toolbar ↔ selection bar never shifts the table. */
+.rad-table-selbar {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c); /* 12px */
+  box-sizing: border-box;
+  height: 48px;
+  padding: 0 var(--rd-sys-spacing-d); /* 16px sides; centred vertically */
+  background: var(--rd-sys-color-bg-sunken);
+  border: 1px solid var(--rd-sys-color-border-subtle);
+  border-bottom: none; /* the table wrap's own top border is the divider */
+  border-radius: var(--rd-sys-radius-6) var(--rd-sys-radius-6) 0 0;
+}
+.rad-table-selbar__count { color: var(--rd-sys-color-content-primary); }
+.rad-table-selbar__sep {
+  width: 1px;
+  height: 20px;
+  background: var(--rd-sys-color-border-subtle);
+  flex: none;
+}
+.rad-table-selbar__actions { display: flex; align-items: center; gap: var(--rd-sys-spacing-c); /* 12px */ }
+.rad-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: var(--rd-sys-font-family);
+}
+
+/* ---------------- Header ---------------- */
+.rad-th {
+  background: var(--rd-sys-color-bg-sunken);
+  border-bottom: 1px solid var(--rd-sys-color-border-subtle);
+  border-right: 1px solid var(--rd-sys-color-border-subtle);
+  padding: 7px var(--rd-sys-spacing-d); /* Figma header cell: 7px 16px → 32px tall */
+  text-align: left;
+  vertical-align: middle;
+  color: var(--rd-sys-color-content-secondary);
+  user-select: none;
+  /* Header label = Footnote/Caption Regular 12px/18px (NOT the 14px body title). */
+  font-size: var(--rd-sys-type-caption-size);
+  line-height: var(--rd-sys-type-caption-line);
+  letter-spacing: var(--rd-sys-type-caption-tracking);
+  font-weight: var(--rd-sys-font-weight-regular);
+}
+.rad-th:last-child { border-right: none; }
+.rad-th--checkbox { padding: 8px var(--rd-sys-spacing-d); }
+.rad-th--center { text-align: center; }
+.rad-th--right { text-align: right; }
+.rad-th__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-a);
+  width: 100%;
+}
+.rad-th--center .rad-th__inner,
+.rad-th--icon .rad-th__inner,
+.rad-th--verified .rad-th__inner,
+.rad-th--star .rad-th__inner { justify-content: center; }
+/* Checkbox header is left-aligned (16px pad) so it lines up with the row checkboxes. */
+.rad-th--checkbox .rad-th__inner { justify-content: flex-start; }
+.rad-th__label { color: var(--rd-sys-color-content-secondary); }
+.rad-th__hicon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--rd-sys-color-content-secondary);
+  font-size: 18px;
+}
+.rad-th__sortind {
+  display: inline-flex;
+  color: var(--rd-sys-color-content-secondary);
+  flex: none;
+}
+.rad-th__sortbtn {
+  display: inline-flex;
+  margin-left: auto;
+  color: var(--rd-sys-color-content-brand);
+  opacity: 0;
+  transition: opacity 100ms ease;
+  flex: none;
+}
+/* Header hover — bg gray20, border gray30 (Figma header hover state) */
+.rad-th.is-sortable { cursor: pointer; }
+.rad-th:hover {
+  background: var(--rd-sys-color-bg-secondary-action);
+  border-bottom-color: var(--rd-sys-color-border-subtle-hover);
+  border-right-color: var(--rd-sys-color-border-subtle-hover);
+}
+.rad-th.is-sortable:hover .rad-th__sortbtn { opacity: 1; }
+
+/* ---------------- Body ---------------- */
+.rad-tr { transition: background-color 100ms ease; }
+.rad-tr:hover { background: var(--rd-sys-color-bg-ghost-hover); }
+.rad-tr.is-selected { background: var(--rd-sys-color-bg-ghost-highlight); }
+.rad-tr.is-clickable { cursor: pointer; }
+
+.rad-td {
+  height: 72px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--rd-sys-color-border-subtle);
+  padding: var(--rd-sys-spacing-c);
+  vertical-align: middle;
+  color: var(--rd-sys-color-content-primary);
+}
+.rad-td--checkbox,
+.rad-td--author,
+.rad-td--icon { padding-left: var(--rd-sys-spacing-d); padding-right: var(--rd-sys-spacing-d); }
+.rad-td--icon,
+.rad-td--iconButton,
+.rad-td--verified,
+.rad-td--star { text-align: center; }
+/* Centred control columns (icon-button, or an `actions` cell holding a single
+   control) may hold a control wider than the padded content box, which makes
+   text-align:center place the overflow asymmetrically. Drop the side padding so
+   the fixed narrow column width centres the control exactly — header included. */
+.rad-td--iconButton,
+.rad-td--actions.rad-td--center,
+.rad-th--iconButton,
+.rad-th--actions.rad-th--center { padding-left: 0; padding-right: 0; }
+.rad-td--center { text-align: center; }
+.rad-td--right { text-align: right; }
+
+/* Cell content */
+.rad-cell__icon {
+  display: inline-flex;
+  color: var(--rd-sys-color-content-secondary);
+  font-size: 20px;
+}
+.rad-table__verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rd-sys-color-content-brand);
+  vertical-align: middle;
+}
+.rad-cell__title { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.rad-cell__title-text {
+  color: var(--rd-sys-color-content-brand);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rad-cell__title-text:hover { text-decoration: underline; }
+.rad-cell__desc { color: var(--rd-sys-color-content-secondary); }
+
+/* ---- Leading-icon media cell (Figma "Type=Title" 17098:17655 / "Type=Text"
+   17098:18242): an 18px glyph + a title/text line and an optional footnote caption.
+   The icon sits at the cell's 12px left pad, 12px gap to the text, and is centred
+   on the whole two-line block. */
+.rad-cell__media { display: flex; align-items: center; gap: var(--rd-sys-spacing-c); min-width: 0; }
+.rad-cell__media-icon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rd-sys-color-content-secondary);
+}
+.rad-cell__lines { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
+
+.rad-cell__star {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--rd-sys-color-content-tertiary);
+  padding: var(--rd-sys-spacing-a);
+  display: inline-flex;
+}
+.rad-cell__star.is-on { color: var(--rd-sys-color-content-warning); }
+
+.rad-cell__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--rd-sys-spacing-b);
+}
+.rad-cell__more {
+  border: none;
+  background: var(--rd-sys-color-bg-secondary-action);
+  color: var(--rd-sys-color-content-secondary);
+  border-radius: var(--rd-sys-radius-4);
+  padding: 2px var(--rd-sys-spacing-b);
+  cursor: pointer;
+}
+/* +N overflow rendered as a Tag (matches Figma) */
+.rad-cell__more-tag { cursor: pointer; }
+
+.rad-cell__author { display: flex; align-items: center; gap: var(--rd-sys-spacing-c); min-width: 0; }
+.rad-cell__author-name {
+  color: var(--rd-sys-color-content-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rad-cell__text { color: var(--rd-sys-color-content-primary); }

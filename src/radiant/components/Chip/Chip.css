@@ -1,0 +1,42 @@
+/** Radiant — Chip / read-only token. Exact from Figma "Token / Read Only":
+    padding 2px 4px, radius 4, height 24, Body/Normal 14px, fill per kind. */
+.rad-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-b); /* 8px icon↔label */
+  box-sizing: border-box;
+  min-height: 24px;
+  padding: 2px var(--rd-sys-spacing-a); /* 2px 4px */
+  border: none;
+  border-radius: var(--rd-sys-radius-4);
+  color: var(--rd-sys-color-content-primary);
+  white-space: nowrap;
+  font-family: var(--rd-sys-font-family);
+  font-size: var(--rd-sys-type-body-size); /* 14px */
+  line-height: var(--rd-sys-type-body-line);
+  font-weight: var(--rd-sys-font-weight-regular);
+  cursor: default;
+}
+button.rad-chip { cursor: pointer; }
+.rad-chip__icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 0;
+}
+
+.rad-chip--attribute { background: var(--rd-sys-color-chip-attribute-default); }
+.rad-chip--attribute .rad-chip__icon { color: var(--rd-sys-color-chip-attribute-icon); }
+.rad-chip--measure { background: var(--rd-sys-color-chip-measure-default); }
+.rad-chip--measure .rad-chip__icon { color: var(--rd-sys-color-chip-measure-icon); }
+.rad-chip--filter { background: var(--rd-sys-color-chip-filter-default); }
+.rad-chip--filter .rad-chip__icon { color: var(--rd-sys-color-chip-filter-icon); }
+.rad-chip--date { background: var(--rd-sys-color-chip-date-default); }
+.rad-chip--date .rad-chip__icon { color: var(--rd-sys-color-chip-date-icon); }
+.rad-chip--input { background: var(--rd-sys-color-chip-input-pressed); }
+.rad-chip--error { background: var(--rd-sys-color-chip-error-default); }
+
+button.rad-chip--attribute:hover { background: var(--rd-sys-color-chip-attribute-hover); }
+button.rad-chip--measure:hover { background: var(--rd-sys-color-chip-measure-hover); }
+button.rad-chip--filter:hover { background: var(--rd-sys-color-chip-filter-hover); }
+button.rad-chip--date:hover { background: var(--rd-sys-color-chip-date-hover); }

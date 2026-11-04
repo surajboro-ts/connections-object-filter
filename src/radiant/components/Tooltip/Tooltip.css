@@ -1,0 +1,27 @@
+/** Radiant — Tooltip (Figma 246:11127): dark inverse bubble, white caption text. */
+.rad-tooltip-trigger {
+  display: inline-flex;
+  align-items: center;
+}
+.rad-tooltip {
+  position: fixed;
+  z-index: 1000;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-b); /* 8px */
+  max-width: 280px;
+  padding: var(--rd-sys-spacing-b) var(--rd-sys-spacing-c); /* 8px 12px */
+  border-radius: var(--rd-sys-radius-6);
+  background: var(--rd-sys-color-bg-inverse); /* #323946 */
+  color: var(--rd-sys-color-content-inverse); /* #FFFFFF */
+  box-shadow: var(--rd-sys-elevation-menu, 0px 12px 24px 0px rgba(25, 35, 49, 0.12), 0px 0px 4px 0px rgba(25, 35, 49, 0.08));
+  font-family: var(--rd-sys-font-family);
+  font-size: var(--rd-sys-type-caption-size); /* 12px */
+  line-height: var(--rd-sys-type-caption-line); /* 18px */
+  letter-spacing: var(--rd-sys-type-caption-tracking);
+  font-weight: var(--rd-sys-font-weight-regular);
+  pointer-events: none;
+  /* Short labels stay on one line (they fit under max-width); long labels wrap. */
+  white-space: normal;
+}

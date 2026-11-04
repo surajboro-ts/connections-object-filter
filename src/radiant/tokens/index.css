@@ -1,0 +1,12 @@
+/**
+ * Radiant — token entry point.
+ * Import this once at the Radiant app root. Order matters: primitives first
+ * (raw values), then the semantic alias layer and scales that reference them.
+ */
+@import './primitives.css';
+@import './semantic.css';
+@import './spacing.css';
+@import './typography.css';
+@import './radius.css';
+@import './elevation.css';
+@import '../reset.css';

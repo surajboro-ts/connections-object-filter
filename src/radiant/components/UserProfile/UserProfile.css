@@ -1,0 +1,18 @@
+/** Radiant — User profile, RIGHT half of the account capsule (Figma 18244:18931).
+    Mirror of OrgSwitcher: outer (right) corners round (20px), inner (left) 2px. */
+.rad-userprofile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 2px; /* 28px avatar inset */
+  box-sizing: border-box;
+  border: none;
+  border-radius: 2px 20px 20px 2px;
+  background: var(--rd-sys-color-button-background-secondary-default);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+.rad-userprofile:hover { background: var(--rd-sys-color-button-background-secondary-hover); }
+.rad-userprofile:active { background: var(--rd-sys-color-button-background-secondary-pressed); }

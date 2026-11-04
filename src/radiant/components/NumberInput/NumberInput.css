@@ -1,0 +1,33 @@
+/** Radiant — Number input spin buttons. */
+.rad-number__box { padding-right: var(--rd-sys-spacing-a); }
+
+.rad-number__spin {
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  margin: -6px 0;
+  opacity: 0; /* appear on hover / focus (Figma) */
+  transition: opacity 100ms ease;
+}
+.rad-field__box:hover .rad-number__spin,
+.rad-field:focus-within .rad-number__spin,
+.rad-number__box--spinners .rad-number__spin { opacity: 1; }
+/* Keep spinners hidden while disabled. */
+.rad-field--disabled .rad-number__spin { opacity: 0; }
+.rad-number__spinbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--rd-sys-color-content-secondary);
+  padding: 0;
+}
+.rad-number__spinbtn:hover {
+  color: var(--rd-sys-color-content-primary);
+  background: var(--rd-sys-color-bg-ghost-hover);
+  border-radius: var(--rd-sys-radius-4);
+}

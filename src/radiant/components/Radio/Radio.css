@@ -1,0 +1,54 @@
+/**
+ * Radiant — Radio. 16px ring, 1px border (Figma: circle r7.5 stroke 1px).
+ *   Unselected — gray #C0C6CF ring · Selected — blue ring + 8px blue dot.
+ *   Error — red ring (+ red dot when selected), in every state.
+ *   Disabled — 40%.
+ */
+.rad-radio { position: relative; display: inline-flex; width: 16px; height: 16px; flex: none; }
+.rad-radio__input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+
+.rad-radio__ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid var(--rd-sys-color-border-bold);
+  border-radius: 50%;
+  background: var(--rd-sys-color-bg-base);
+  transition: border-color 100ms ease;
+}
+.rad-radio__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rd-sys-color-bg-brand);
+  transform: scale(0);
+  transition: transform 100ms ease;
+}
+.rad-radio__input:hover + .rad-radio__ring { border-color: var(--rd-sys-color-border-bold-hover); }
+.rad-radio__input:checked + .rad-radio__ring { border-color: var(--rd-sys-color-border-brand); }
+.rad-radio__input:checked + .rad-radio__ring .rad-radio__dot { transform: scale(1); }
+.rad-radio__input:focus-visible + .rad-radio__ring {
+  outline: 2px solid var(--rd-sys-color-border-focus);
+  outline-offset: 1px;
+}
+.rad-radio__input:disabled + .rad-radio__ring { cursor: not-allowed; }
+.rad-radio:has(.rad-radio__input:disabled) { opacity: 0.4; }
+
+/* Error — red ring + red dot in EVERY state (must out-specify :checked / :hover). */
+.rad-radio--error .rad-radio__ring,
+.rad-radio--error .rad-radio__input:hover + .rad-radio__ring,
+.rad-radio--error .rad-radio__input:checked + .rad-radio__ring {
+  border-color: var(--rd-sys-color-border-failure);
+}
+.rad-radio--error .rad-radio__dot { background: var(--rd-sys-color-content-failure); }
+
+.rad-radio-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rd-sys-spacing-c); /* 12px */
+  cursor: pointer;
+}
+.rad-radio-field__label { color: var(--rd-sys-color-content-primary); }
